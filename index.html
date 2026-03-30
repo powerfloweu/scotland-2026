@@ -172,8 +172,18 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--free-bg);border:1px solid var(--free)"></div>Free Entry</div>
   </div>
 
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filter-bar">
+    <span class="filter-lbl">Show</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="hp">🧙 Harry Potter</button>
+    <button class="filter-btn" data-filter="tweed">🧥 Posh Clothes</button>
+    <button class="filter-btn" data-filter="castle-hike">🏰 Castles &amp; Hikes</button>
+    <button class="filter-btn" data-filter="accommodation">🛏️ Accommodation</button>
+  </div>
+
   <!-- TIMELINE -->
-  <div class="timeline">
+  <div class="timeline" id="timeline">
 
     <!-- APR 2 -->
     <div class="day" id="day-2">
@@ -808,5 +818,62 @@
 </div>
 
 <script src="js/map.js"></script>
+<script>
+(function(){
+  var tagSelectors = {
+    'hp':           '.tag-hp',
+    'tweed':        '.tag-tweed',
+    'castle-hike':  '.tag-castle, .tag-hike'
+  };
+
+  function applyFilter(f) {
+    var days  = document.querySelectorAll('#timeline .day');
+    var progs = document.querySelectorAll('#timeline .prog');
+
+    // Reset everything
+    days.forEach(function(d){
+      d.style.display = '';
+      d.querySelectorAll('.progs, .meal-strip').forEach(function(el){ el.style.display = ''; });
+    });
+    progs.forEach(function(p){ p.style.display = ''; });
+
+    if (f === 'all') return;
+
+    if (f === 'accommodation') {
+      days.forEach(function(day){
+        var hotel = day.querySelector('.card-hotel');
+        if (hotel) {
+          day.querySelectorAll('.progs, .meal-strip').forEach(function(el){ el.style.display = 'none'; });
+        } else {
+          day.style.display = 'none';
+        }
+      });
+      return;
+    }
+
+    var sel = tagSelectors[f];
+    progs.forEach(function(prog){
+      prog.style.display = prog.querySelector(sel) ? '' : 'none';
+    });
+
+    // Hide days where every prog is now hidden
+    days.forEach(function(day){
+      var anyVisible = false;
+      day.querySelectorAll('.prog').forEach(function(p){
+        if (p.style.display !== 'none') anyVisible = true;
+      });
+      day.style.display = anyVisible ? '' : 'none';
+    });
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      applyFilter(this.dataset.filter);
+    });
+  });
+})();
+</script>
 </body>
 </html>
