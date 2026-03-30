@@ -15,6 +15,45 @@
 </head>
 <body>
 
+<div id="auth-overlay" style="display:none;position:fixed;inset:0;background:var(--forest);z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">
+  <div style="background:#0e1e17;border:1px solid rgba(232,184,75,.2);border-radius:16px;padding:40px 44px;width:100%;max-width:360px;box-shadow:0 8px 40px rgba(0,0,0,.5);">
+    <div style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(232,184,75,.6);margin-bottom:10px;">Trip Access</div>
+    <div style="font-family:'Playfair Display',serif;font-size:26px;color:#fafaf6;margin-bottom:28px;">Wild <em style="color:#e8b84b;">Scotland</em></div>
+    <div style="margin-bottom:14px;">
+      <label style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,233,.45);display:block;margin-bottom:5px;">Username</label>
+      <input id="auth-user" type="text" autocomplete="username" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fafaf6;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="">
+    </div>
+    <div style="margin-bottom:20px;">
+      <label style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,233,.45);display:block;margin-bottom:5px;">Password</label>
+      <input id="auth-pass" type="password" autocomplete="current-password" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fafaf6;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="">
+    </div>
+    <div id="auth-err" style="display:none;font-size:11px;color:#e07070;margin-bottom:12px;">Incorrect username or password.</div>
+    <button id="auth-btn" style="width:100%;padding:11px;background:#c07b28;border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;cursor:pointer;font-family:'DM Sans',sans-serif;">Enter</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const HASH='b68580bfc71d79124c7f422d7edff2e0e324e94434bc8c7aa49a71eb84594bdf';
+  const KEY='scot26_auth';
+  const overlay=document.getElementById('auth-overlay');
+  if(sessionStorage.getItem(KEY)==='1'){overlay.remove();return;}
+  overlay.style.display='flex';
+  async function attempt(){
+    const u=document.getElementById('auth-user').value.trim();
+    const p=document.getElementById('auth-pass').value;
+    const enc=new TextEncoder().encode(u+':'+p);
+    const buf=await crypto.subtle.digest('SHA-256',enc);
+    const hex=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hex===HASH){sessionStorage.setItem(KEY,'1');overlay.remove();}
+    else{document.getElementById('auth-err').style.display='block';}
+  }
+  document.getElementById('auth-btn').addEventListener('click',attempt);
+  document.getElementById('auth-pass').addEventListener('keydown',e=>{if(e.key==='Enter')attempt();});
+  document.getElementById('auth-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('auth-pass').focus();});
+})();
+</script>
+
 <div class="header">
   <div class="header-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
   <div class="h-eyebrow">Trip Itinerary · 3 Travellers · 7 Nights · Budapest → Scotland</div>
