@@ -75,6 +75,16 @@
   .park-tip{background:var(--forest);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:11px;color:var(--cream);line-height:1.6;}
   .park-tip strong{color:var(--gold);}
 
+  /* FILTER BAR */
+  .filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;background:var(--white);border:1px solid var(--mist);border-radius:10px;margin-top:12px;margin-bottom:28px;}
+  .filter-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-right:4px;white-space:nowrap;}
+  .filter-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--mist);background:transparent;color:var(--stone);font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;line-height:1;}
+  .filter-btn:hover{border-color:var(--forest);color:var(--forest);background:rgba(24,48,42,.05);}
+  .filter-btn.active{background:var(--forest);border-color:var(--forest);color:var(--white);}
+  .filter-btn.active:hover{background:var(--pine);}
+  .filter-empty{display:none;text-align:center;padding:32px 16px;color:var(--stone);font-size:13px;}
+  .filter-empty.visible{display:block;}
+
   /* LEGEND */
   .legend{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding:13px 16px;background:var(--white);border:1px solid var(--mist);border-radius:10px;margin-top:28px;margin-bottom:4px;}
   .legend-ttl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);width:100%;margin-bottom:1px;}
@@ -183,6 +193,7 @@
     .rates-bar { padding: 10px 20px; gap: 14px; }
     .weather { padding: 10px 20px; }
     .day-nav { padding: 0 20px; }
+    .day-nav a { display: flex; align-items: center; min-height: 44px; }
     .body { padding: 0 16px 40px; }
     .parking-grid { grid-template-columns: 1fr; }
     .sum-grid { grid-template-columns: 1fr; }
@@ -209,15 +220,38 @@
 
   @media (max-width: 480px) {
     .h-title { font-size: 28px; }
-    .day-nav a { padding: 8px 10px; font-size: 10px; }
+    .filter-bar { gap: 6px; padding: 10px 12px; }
+    .filter-btn { font-size: 11px; padding: 7px 10px; }
+    .day-nav a { padding: 8px 10px; font-size: 10px; min-height: 44px; }
     .prog { gap: 7px; }
     .p-time { width: 36px; font-size: 9px; }
-    .p-right { min-width: 52px; }
-    .p-thumb { width: 48px; height: 32px; }
+    .p-thumb { display: none; }
+    .p-right { min-width: 0; }
+    .p-name { font-size: 13px; }
+    .p-desc { font-size: 11.5px; }
     .sum-cell { padding: 14px 16px; }
     .sum-head { padding: 16px 16px 12px; }
     .fx-note { padding: 10px 16px; }
     .tot-big { font-size: 30px; }
+  }
+
+  @media (max-width: 360px) {
+    .header { padding: 20px 14px 18px; }
+    .h-title { font-size: 22px; }
+    .h-eyebrow { font-size: 9px; }
+    .rates-bar { padding: 8px 14px; gap: 10px; }
+    .weather { padding: 8px 14px; }
+    .day-nav { padding: 0 10px; }
+    .day-nav a { padding: 8px 8px; font-size: 9.5px; }
+    .body { padding: 0 10px 32px; }
+    .card-head { padding: 10px 12px; }
+    .card-title { font-size: 14px; }
+    .progs { padding: 4px 12px; }
+    .card-hotel { padding: 8px 12px; }
+    .sum-cell { padding: 12px 14px; }
+    .sum-head { padding: 14px 14px 10px; }
+    .sum-total { padding: 16px 14px; }
+    .tot-big { font-size: 26px; }
   }
 
   /* ── PRINT ── */
