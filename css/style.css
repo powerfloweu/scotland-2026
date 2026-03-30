@@ -183,6 +183,7 @@
     .rates-bar { padding: 10px 20px; gap: 14px; }
     .weather { padding: 10px 20px; }
     .day-nav { padding: 0 20px; }
+    .day-nav a { display: flex; align-items: center; min-height: 44px; }
     .body { padding: 0 16px 40px; }
     .parking-grid { grid-template-columns: 1fr; }
     .sum-grid { grid-template-columns: 1fr; }
@@ -209,15 +210,36 @@
 
   @media (max-width: 480px) {
     .h-title { font-size: 28px; }
-    .day-nav a { padding: 8px 10px; font-size: 10px; }
+    .day-nav a { padding: 8px 10px; font-size: 10px; min-height: 44px; }
     .prog { gap: 7px; }
     .p-time { width: 36px; font-size: 9px; }
-    .p-right { min-width: 52px; }
-    .p-thumb { width: 48px; height: 32px; }
+    .p-thumb { display: none; }
+    .p-right { min-width: 0; }
+    .p-name { font-size: 13px; }
+    .p-desc { font-size: 11.5px; }
     .sum-cell { padding: 14px 16px; }
     .sum-head { padding: 16px 16px 12px; }
     .fx-note { padding: 10px 16px; }
     .tot-big { font-size: 30px; }
+  }
+
+  @media (max-width: 360px) {
+    .header { padding: 20px 14px 18px; }
+    .h-title { font-size: 22px; }
+    .h-eyebrow { font-size: 9px; }
+    .rates-bar { padding: 8px 14px; gap: 10px; }
+    .weather { padding: 8px 14px; }
+    .day-nav { padding: 0 10px; }
+    .day-nav a { padding: 8px 8px; font-size: 9.5px; }
+    .body { padding: 0 10px 32px; }
+    .card-head { padding: 10px 12px; }
+    .card-title { font-size: 14px; }
+    .progs { padding: 4px 12px; }
+    .card-hotel { padding: 8px 12px; }
+    .sum-cell { padding: 12px 14px; }
+    .sum-head { padding: 14px 14px 10px; }
+    .sum-total { padding: 16px 14px; }
+    .tot-big { font-size: 26px; }
   }
 
   /* ── PRINT ── */
