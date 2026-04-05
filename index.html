@@ -4,160 +4,300 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scotland Trip — April 2–9, 2026</title>
-<meta name="description" content="7-night Scotland road trip itinerary: Budapest → Edinburgh, April 2–9 2026. Glencoe, Glenfinnan, Eilean Donan, Edinburgh — 3 travellers.">
+<meta name="description" content="7-night Scotland road trip itinerary: Budapest → Edinburgh, April 2–9 2026. Glencoe, Eilean Donan, Edinburgh — 3 travellers.">
 <meta property="og:title" content="Wild Scotland — April 2–9, 2026">
-<meta property="og:description" content="7-night road trip: Glencoe, Glenfinnan Viaduct, Eilean Donan Castle, Edinburgh. Day-by-day itinerary with costs, map and hotel details.">
+<meta property="og:description" content="7-night road trip: Glencoe, Eilean Donan Castle, Edinburgh. Day-by-day itinerary with costs, map and hotel details.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<link rel="stylesheet" href="css/style.css">
+<style>
+:root {
+  --forest:#18302a; --pine:#24503e; --moss:#3a7055;
+  --amber:#c07b28; --gold:#e8b84b; --cream:#f6f1e9;
+  --mist:#e4dfd5; --stone:#8a7f72; --dark:#0e1a14; --white:#fafaf6;
+  --hp:#6b3fa0; --hp-bg:#f0e8ff;
+  --hike:#256b45; --hike-bg:#e2f4eb;
+  --food:#b05a00; --food-bg:#fff3e6;
+  --tweed:#1f5a8a; --tweed-bg:#e6f0f8;
+  --castle:#8c2020; --castle-bg:#fde8e8;
+  --free:#166620; --free-bg:#e4ffe4;
+  --travel:#555; --travel-bg:#ebebeb;
+  --warn:#7a5c00; --warn-bg:#fff8d6;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+a{text-decoration:none;color:inherit;}
+a:hover{text-decoration:underline;}
+body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--dark);max-width:980px;margin:0 auto;}
+.header{background:var(--forest);padding:50px 64px 42px;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;right:-60px;top:-60px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,75,.13) 0%,transparent 68%);}
+.header-flag{position:absolute;right:64px;bottom:32px;font-size:90px;opacity:.16;}
+.h-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.h-title{font-family:'Playfair Display',serif;font-size:54px;line-height:1.08;color:var(--white);}
+.h-title em{color:var(--gold);font-style:italic;}
+.h-meta{display:flex;gap:40px;margin-top:28px;flex-wrap:wrap;}
+.h-meta-item{display:flex;flex-direction:column;gap:3px;}
+.h-meta-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,184,75,.65);}
+.h-meta-value{font-size:13.5px;color:var(--white);font-weight:500;}
+.rates-bar{background:#0e1e17;padding:10px 64px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.rates-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,184,75,.6);}
+.rate-pill{font-size:11.5px;color:var(--mist);}
+.rate-pill strong{color:var(--gold);}
+.weather{background:var(--pine);padding:12px 64px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.weather-lbl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.w-pills{display:flex;gap:7px;flex-wrap:wrap;}
+.w-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:20px;font-size:11px;color:var(--cream);}
+.day-nav{position:sticky;top:0;z-index:1000;background:var(--dark);padding:0 64px;display:flex;align-items:stretch;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.day-nav::-webkit-scrollbar{display:none;}
+.day-nav a{color:rgba(246,241,233,.65);font-size:10.5px;font-weight:500;letter-spacing:.06em;padding:9px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;text-decoration:none;}
+.day-nav a:hover{color:var(--gold);border-bottom-color:var(--gold);text-decoration:none;}
+.body{padding:0 64px 64px;}
+.section-head{margin-top:32px;margin-bottom:14px;display:flex;align-items:baseline;gap:10px;}
+.section-head h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--forest);}
+.section-head span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);}
+#trip-map{height:430px;border-radius:var(--radius);border:1px solid var(--mist);box-shadow:0 2px 14px rgba(0,0,0,.08);}
+.booking-alert{background:var(--warn-bg);border:1px solid #e8c84a;border-radius:10px;padding:14px 18px;margin-top:20px;display:flex;gap:14px;align-items:flex-start;}
+.alert-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.alert-title{font-size:13px;font-weight:700;color:var(--warn);margin-bottom:5px;}
+.alert-body{font-size:11.5px;color:#5a4400;line-height:1.6;}
+.alert-body a{color:#7a5c00;border-bottom:1px dotted #7a5c00;font-weight:600;}
+.alert-body a:hover{text-decoration:none;color:var(--forest);}
+.parking-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:4px;}
+.park-card{background:var(--white);border:1px solid var(--mist);border-radius:10px;padding:14px 16px;position:relative;}
+.park-badge{position:absolute;top:10px;right:10px;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;}
+.badge-best{background:#e4ffe4;color:#166620;}
+.badge-central{background:#fff3e6;color:#b05a00;}
+.badge-cheap{background:#e6f0f8;color:#1f5a8a;}
+.park-name{font-weight:700;font-size:13px;color:var(--dark);margin-bottom:4px;}
+.park-name a{color:var(--pine);border-bottom:1px dotted var(--pine);}
+.park-dist{font-size:10.5px;color:var(--stone);margin-bottom:8px;}
+.park-price{font-size:20px;font-weight:700;color:var(--amber);}
+.park-price small{font-size:11px;color:var(--stone);font-weight:400;}
+.park-notes{font-size:10.5px;color:var(--stone);margin-top:6px;line-height:1.5;}
+.park-tip{background:var(--forest);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:11px;color:var(--cream);line-height:1.6;}
+.park-tip strong{color:var(--gold);}
+.filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;background:var(--white);border:1px solid var(--mist);border-radius:10px;margin-top:12px;margin-bottom:28px;}
+.filter-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-right:4px;white-space:nowrap;}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--mist);background:transparent;color:var(--stone);font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;line-height:1;}
+.filter-btn:hover{border-color:var(--forest);color:var(--forest);background:rgba(24,48,42,.05);}
+.filter-btn.active{background:var(--forest);border-color:var(--forest);color:var(--white);}
+.filter-btn.active:hover{background:var(--pine);}
+.legend{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding:13px 16px;background:var(--white);border:1px solid var(--mist);border-radius:10px;margin-top:28px;margin-bottom:4px;}
+.legend-ttl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);width:100%;margin-bottom:1px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--stone);}
+.legend-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+.timeline{position:relative;padding-top:34px;}
+.timeline::before{content:'';position:absolute;left:90px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold) 0%,rgba(192,123,40,.3) 88%,transparent 100%);}
+.day{display:flex;gap:26px;margin-bottom:26px;position:relative;}
+.day-lbl{width:62px;flex-shrink:0;text-align:right;padding-top:16px;}
+.day-num{font-family:'Playfair Display',serif;font-size:30px;line-height:1;color:var(--forest);}
+.day-wday{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);display:block;margin-top:2px;}
+.day-dot{position:absolute;left:84px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--amber);z-index:1;}
+.day-dot.end{background:var(--amber);}
+.day-card{flex:1;background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.card-head{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--mist);gap:10px;}
+.card-title{font-family:'Playfair Display',serif;font-size:15.5px;color:var(--forest);}
+.card-loc{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:2px;}
+.card-cost{text-align:right;white-space:nowrap;}
+.card-cost strong{display:block;font-size:18px;color:var(--amber);font-weight:600;}
+.card-cost span{font-size:10px;color:var(--stone);}
+.progs{padding:6px 18px;}
+.prog{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--mist);}
+.prog:last-child{border-bottom:none;}
+.p-time{font-size:10px;color:var(--stone);width:46px;flex-shrink:0;padding-top:2px;font-variant-numeric:tabular-nums;}
+.p-icon{font-size:13px;width:17px;flex-shrink:0;text-align:center;padding-top:1px;}
+.p-body{flex:1;min-width:0;}
+.p-name{font-size:12.5px;font-weight:600;color:var(--dark);line-height:1.3;}
+.p-name a{color:var(--dark);border-bottom:1px dotted var(--stone);transition:color .15s;}
+.p-name a:hover{color:var(--pine);border-color:var(--pine);text-decoration:none;}
+.p-desc{font-size:11px;color:var(--stone);margin-top:2px;line-height:1.45;}
+.p-desc a{color:var(--pine);}
+.p-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+.tag{font-size:9px;padding:2px 7px;border-radius:4px;letter-spacing:.04em;font-weight:500;}
+.tag-hp{background:var(--hp-bg);color:var(--hp);}
+.tag-hike{background:var(--hike-bg);color:var(--hike);}
+.tag-food{background:var(--food-bg);color:var(--food);}
+.tag-tweed{background:var(--tweed-bg);color:var(--tweed);}
+.tag-castle{background:var(--castle-bg);color:var(--castle);}
+.tag-travel{background:var(--travel-bg);color:var(--travel);}
+.tag-free{background:var(--free-bg);color:var(--free);font-weight:700;}
+.tag-warn{background:var(--warn-bg);color:var(--warn);font-weight:700;}
+.p-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;min-width:72px;}
+.p-cost{font-size:12px;font-weight:700;color:var(--amber);white-space:nowrap;text-align:right;}
+.p-cost small{display:block;font-size:9px;color:var(--stone);font-weight:400;}
+.p-thumb{width:68px;height:46px;object-fit:cover;border-radius:6px;display:block;border:1px solid var(--mist);}
+.meal-strip{display:flex;border-top:1px solid var(--mist);background:#fdfcf8;}
+.meal-block{flex:1;padding:7px 14px;border-right:1px solid var(--mist);display:flex;align-items:center;gap:8px;}
+.meal-block:last-child{border-right:none;}
+.meal-ico{font-size:14px;}
+.meal-info{flex:1;}
+.meal-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);display:block;}
+.meal-name{font-size:11.5px;color:var(--dark);font-weight:500;}
+.meal-cost{font-size:11px;color:var(--amber);font-weight:700;margin-left:auto;white-space:nowrap;}
+.card-hotel{background:var(--forest);padding:9px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.hotel-info{display:flex;align-items:center;gap:8px;}
+.hotel-ico{font-size:13px;}
+.hotel-name{font-size:11.5px;color:var(--cream);font-weight:500;}
+.hotel-name a{color:var(--gold);}
+.hotel-name a:hover{text-decoration:underline;}
+.hotel-sub{font-size:9.5px;color:rgba(246,241,233,.5);margin-top:1px;}
+.hotel-price{font-size:13px;color:var(--gold);font-weight:700;white-space:nowrap;}
+.summary{margin-top:44px;background:var(--forest);border-radius:16px;overflow:hidden;}
+.sum-head{padding:24px 30px 14px;border-bottom:1px solid rgba(255,255,255,.1);}
+.sum-head h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--white);}
+.sum-head p{font-size:11px;color:rgba(246,241,233,.5);margin-top:4px;}
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);}
+.sum-cell{background:var(--forest);padding:16px 28px;}
+.sum-cat{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.sum-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11.5px;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.055);}
+.sum-row:last-child{border-bottom:none;}
+.sum-row span:last-child{color:var(--gold);font-weight:600;}
+.sum-row.hl{background:rgba(232,184,75,.08);padding:5px 6px;border-radius:4px;margin:2px -4px;}
+.sum-sub{display:flex;justify-content:space-between;padding:7px 0;font-size:12px;font-weight:700;color:var(--white);border-top:1px solid rgba(255,255,255,.16);margin-top:3px;}
+.sum-sub span:last-child{color:var(--gold);}
+.sum-total{background:var(--pine);padding:20px 30px;display:flex;align-items:center;justify-content:space-between;}
+.tot-lbl{font-family:'Playfair Display',serif;font-size:21px;color:var(--white);font-style:italic;}
+.tot-lbl span{display:block;font-style:normal;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,233,.5);margin-bottom:2px;}
+.tot-amount{text-align:right;}
+.tot-pp{font-size:12px;color:rgba(246,241,233,.6);}
+.tot-big{font-family:'Playfair Display',serif;font-size:38px;color:var(--gold);line-height:1.1;}
+.fx-note{background:rgba(0,0,0,.25);padding:10px 30px;font-size:10px;color:rgba(246,241,233,.45);line-height:1.6;}
+.footnote{font-size:10px;color:var(--stone);font-style:italic;text-align:center;margin-top:18px;padding-bottom:8px;line-height:1.7;}
+.footnote a{color:var(--pine);border-bottom:1px dotted var(--pine);}
+.leaflet-popup-content{font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.5;}
+.leaflet-popup-content strong{color:#18302a;}
+.car-card{display:flex;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--mist);margin-top:28px;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.car-card img{width:380px;flex-shrink:0;object-fit:cover;object-position:center;}
+.car-card-info{padding:22px 26px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
+.car-eyebrow{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);}
+.car-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--forest);}
+.car-detail{font-size:11.5px;color:var(--stone);line-height:1.65;}
+.car-plate{display:inline-block;background:var(--dark);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.12em;padding:3px 10px;border-radius:4px;margin-top:4px;}
+@media (max-width:768px){
+  .header{padding:32px 20px 28px;}
+  .header-flag{right:16px;bottom:16px;font-size:60px;}
+  .h-title{font-size:36px;}
+  .h-meta{gap:16px;}
+  .rates-bar{padding:10px 20px;gap:14px;}
+  .weather{padding:10px 20px;}
+  .day-nav{padding:0 20px;}
+  .day-nav a{display:flex;align-items:center;min-height:44px;}
+  .body{padding:0 16px 40px;}
+  .parking-grid{grid-template-columns:1fr;}
+  .sum-grid{grid-template-columns:1fr;}
+  .sum-total{flex-direction:column;gap:10px;}
+  .sum-total .tot-amount{text-align:left;}
+  .meal-strip{flex-direction:column;}
+  .meal-block{border-right:none;border-bottom:1px solid var(--mist);}
+  .meal-block:last-child{border-bottom:none;}
+  .p-thumb{display:none;}
+  .timeline::before{left:54px;}
+  .day{gap:14px;}
+  .day-lbl{width:40px;}
+  .day-num{font-size:22px;}
+  .day-dot{left:49px;}
+  .card-hotel{flex-direction:column;align-items:flex-start;gap:4px;}
+  .car-card{flex-direction:column;}
+  .car-card img{width:100%;height:200px;}
+  .h-meta-value{font-size:12px;}
+}
+</style>
 </head>
 <body>
 
-<div id="auth-overlay" style="display:none;position:fixed;inset:0;background:var(--forest);z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;padding:0 16px;">
-  <div style="background:#0e1e17;border:1px solid rgba(232,184,75,.2);border-radius:16px;padding:clamp(24px,6vw,40px) clamp(20px,8vw,44px);width:100%;max-width:360px;box-shadow:0 8px 40px rgba(0,0,0,.5);">
-    <div style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(232,184,75,.6);margin-bottom:10px;">Trip Access</div>
-    <div style="font-family:'Playfair Display',serif;font-size:26px;color:#fafaf6;margin-bottom:28px;">Wild <em style="color:#e8b84b;">Scotland</em></div>
-    <div style="margin-bottom:14px;">
-      <label style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,233,.45);display:block;margin-bottom:5px;">Username</label>
-      <input id="auth-user" type="text" autocomplete="username" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fafaf6;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="">
-    </div>
-    <div style="margin-bottom:20px;">
-      <label style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,233,.45);display:block;margin-bottom:5px;">Password</label>
-      <input id="auth-pass" type="password" autocomplete="current-password" style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fafaf6;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="">
-    </div>
-    <div id="auth-err" style="display:none;font-size:11px;color:#e07070;margin-bottom:12px;">Incorrect username or password.</div>
-    <button id="auth-btn" style="width:100%;padding:11px;background:#c07b28;border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;cursor:pointer;font-family:'DM Sans',sans-serif;">Enter</button>
-  </div>
-</div>
-
-<script>
-(function(){
-  const HASH='b68580bfc71d79124c7f422d7edff2e0e324e94434bc8c7aa49a71eb84594bdf';
-  const KEY='scot26_auth';
-  const overlay=document.getElementById('auth-overlay');
-  if(sessionStorage.getItem(KEY)==='1'){overlay.remove();return;}
-  overlay.style.display='flex';
-  async function attempt(){
-    const u=document.getElementById('auth-user').value.trim();
-    const p=document.getElementById('auth-pass').value;
-    const enc=new TextEncoder().encode(u+':'+p);
-    const buf=await crypto.subtle.digest('SHA-256',enc);
-    const hex=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    if(hex===HASH){sessionStorage.setItem(KEY,'1');overlay.remove();}
-    else{document.getElementById('auth-err').style.display='block';}
-  }
-  document.getElementById('auth-btn').addEventListener('click',attempt);
-  document.getElementById('auth-pass').addEventListener('keydown',e=>{if(e.key==='Enter')attempt();});
-  document.getElementById('auth-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('auth-pass').focus();});
-})();
-</script>
-
 <div class="header">
-  <div class="header-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
-  <div class="h-eyebrow">Trip Itinerary · 3 Travellers · 7 Nights · Budapest → Scotland</div>
-  <h1 class="h-title">Wild <em>Scotland</em><br>April 2–9, 2026</h1>
+  <div class="header-flag">&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F;</div>
+  <div class="h-eyebrow">Trip Itinerary &middot; 3 Travellers &middot; 7 Nights &middot; Budapest &rarr; Scotland</div>
+  <h1 class="h-title">Wild <em>Scotland</em><br>April 2&ndash;9, 2026</h1>
   <div class="h-meta">
-    <div class="h-meta-item"><span class="h-meta-label">Departs</span><span class="h-meta-value">Budapest BUD · Apr 2 · 21:55 CEST</span></div>
-    <div class="h-meta-item"><span class="h-meta-label">Arrives</span><span class="h-meta-value">Edinburgh EDI · Apr 3 · ~00:00 BST → Airport hotel · pick up car 11:00 · straight north</span></div>
-    <div class="h-meta-item"><span class="h-meta-label">Route</span><span class="h-meta-value">Airport → Culross → House of Bruar (A9) → Glencoe → Glenfinnan → Eilean Donan → Loch Lomond → Edinburgh (Apr 7–9)</span></div>
-    <div class="h-meta-item"><span class="h-meta-label">Car</span><span class="h-meta-value">Pick up at EDI Apr 3 · £555 ≈ €642</span></div>
+    <div class="h-meta-item"><span class="h-meta-label">Departs</span><span class="h-meta-value">Budapest BUD &middot; Apr 2 &middot; 21:55 CEST</span></div>
+    <div class="h-meta-item"><span class="h-meta-label">Arrives</span><span class="h-meta-value">Edinburgh EDI &middot; Apr 3 &middot; ~00:00 BST &rarr; Airport hotel &middot; pick up car 11:00 &middot; straight north</span></div>
+    <div class="h-meta-item"><span class="h-meta-label">Route</span><span class="h-meta-value">Airport &rarr; Culross &rarr; House of Bruar (A9) &rarr; Glencoe &rarr; Eilean Donan &rarr; Glen Nevis &rarr; Rannoch Moor &rarr; Luss &rarr; Callander &rarr; Kelpies &rarr; Edinburgh (Apr 7&ndash;9)</span></div>
+    <div class="h-meta-item"><span class="h-meta-label">Car</span><span class="h-meta-value">Pick up at EDI Apr 3 &middot; &pound;555 &asymp; &euro;642</span></div>
   </div>
 </div>
 
 <div class="rates-bar">
-  <div class="rates-lbl">Live FX · Mar 29 2026</div>
-  <div class="rate-pill">€1 = <strong>~390 HUF</strong></div>
-  <div class="rate-pill">£1 = <strong>~€1.156</strong></div>
-  <div class="rate-pill">£1 = <strong>~450 HUF</strong></div>
-  <div class="rate-pill">Flights: 87,500 HUF × 3 = <strong>~€673 total</strong> (€224/person)</div>
-  <div class="rate-pill">Car rental: £555 = <strong>~€642</strong></div>
+  <div class="rates-lbl">Live FX &middot; Mar 29 2026</div>
+  <div class="rate-pill">&euro;1 = <strong>~390 HUF</strong></div>
+  <div class="rate-pill">&pound;1 = <strong>~&euro;1.156</strong></div>
+  <div class="rate-pill">&pound;1 = <strong>~450 HUF</strong></div>
+  <div class="rate-pill">Flights: 87,500 HUF &times; 3 = <strong>~&euro;673 total</strong> (&euro;224/person)</div>
+  <div class="rate-pill">Car rental: &pound;555 = <strong>~&euro;642</strong></div>
 </div>
+
 <div class="weather">
   <div class="weather-lbl">April Weather</div>
   <div class="w-pills">
-    <span class="w-pill">🌡️ 3–11°C</span>
-    <span class="w-pill">🌧️ 3–8 rainy days</span>
-    <span class="w-pill">☀️ ~5 hrs sun/day</span>
-    <span class="w-pill">🌨️ Snow possible in Highlands</span>
-    <span class="w-pill">💨 Strong wind on exposed ridges</span>
-    <span class="w-pill">🧥 Waterproofs + warm layers always</span>
+    <span class="w-pill">&#127777;&#65039; 3&ndash;11&deg;C</span>
+    <span class="w-pill">&#127783;&#65039; 3&ndash;8 rainy days</span>
+    <span class="w-pill">&#9728;&#65039; ~5 hrs sun/day</span>
+    <span class="w-pill">&#127784;&#65039; Snow possible in Highlands</span>
+    <span class="w-pill">&#128168; Strong wind on exposed ridges</span>
+    <span class="w-pill">&#129405; Waterproofs + warm layers always</span>
   </div>
 </div>
 
 <nav class="day-nav" aria-label="Jump to day">
-  <a href="#day-2">Apr 2 · Departure</a>
-  <a href="#day-3">Apr 3 · Drive North</a>
-  <a href="#day-4">Apr 4 · Glencoe Hike</a>
-  <a href="#day-5">Apr 5 · Glenfinnan</a>
-  <a href="#day-6">Apr 6 · Eilean Donan</a>
-  <a href="#day-7">Apr 7 · Edinburgh</a>
-  <a href="#day-8">Apr 8 · Edinburgh Full Day</a>
-  <a href="#day-9">Apr 9 · Fly Home</a>
+  <a href="#day-2">Apr 2 &middot; Departure</a>
+  <a href="#day-3">Apr 3 &middot; Drive North</a>
+  <a href="#day-4">Apr 4 &middot; Glencoe Hike</a>
+  <a href="#day-5">Apr 5 &middot; Eilean Donan &amp; Steall Falls</a>
+  <a href="#day-6">Apr 6 &middot; Rannoch Moor &amp; Luss</a>
+  <a href="#day-7">Apr 7 &middot; Kelpies &amp; Edinburgh</a>
+  <a href="#day-8">Apr 8 &middot; Edinburgh Full Day</a>
+  <a href="#day-9">Apr 9 &middot; Fly Home</a>
 </nav>
 
 <div class="body">
 
-  <!-- CAR -->
-  <div class="car-card">
-    <img src="img/car.jpg" alt="Audi Q3 SG64 HHV — rental car">
-    <div class="car-card-info">
-      <div class="car-eyebrow">Your Rental Car · Apr 3–9</div>
-      <div class="car-title">Audi Q3 S-Line</div>
-      <div class="car-detail">
-        Pick up Edinburgh Airport · 11:00 Apr 3<br>
-        Drop off Edinburgh Airport · 14:00 Apr 9<br>
-        7 days · £555 ≈ €642 ≈ 249,750 HUF<br>
-        ~850 km total route
-      </div>
-      <div class="car-plate">SG64 HHV</div>
-    </div>
-  </div>
-
   <!-- MAP -->
-  <div class="section-head"><h2>🗺️ Your Route</h2><span>Click any marker for details</span></div>
+  <div class="section-head"><h2>&#x1F5FA;&#xFE0F; Your Route</h2><span>Click any marker for details</span></div>
   <div id="trip-map"></div>
 
   <!-- HOUSE OF BRUAR NOTE -->
   <div class="booking-alert">
-    <div class="alert-icon">✅</div>
+    <div class="alert-icon">&#x2705;</div>
     <div>
-      <div class="alert-title">House of Bruar — No Booking Needed</div>
+      <div class="alert-title">Advance Bookings Required &mdash; Act Early!</div>
       <div class="alert-body">
-        Walk-in only · open daily 9am–5:30pm · no reservation required for shopping or the Food Hall. The Falls of Bruar walk is also free and open 24/7. Just park up and enjoy!<br>
-        📍 <a href="https://www.houseofbruar.com/" target="_blank">houseofbruar.com</a> &nbsp;·&nbsp; Blair Atholl, Perthshire PH18 5TW &nbsp;·&nbsp; 📞 <a href="tel:+441796483236">+44 1796 483236</a>
+        <strong>Eilean Donan Castle</strong> (Apr 5): Open 10am&ndash;3pm in April &mdash; <a href="https://www.eileandonancastle.com/" target="_blank">book tickets online</a> before you go &middot; ~&euro;12/person.<br>
+        <strong>Department of Magic</strong> (Apr 7 evening): HP escape room, Blair St Edinburgh &mdash; <a href="https://www.departmentofmagic.com/" target="_blank">book at departmentofmagic.com</a> &middot; ~&euro;20&ndash;25/person.<br>
+        <strong>Edinburgh Castle</strong> (Apr 8): <a href="https://www.edinburghcastle.scot/" target="_blank">book online</a> &middot; ~&euro;21/person.<br>
+        <strong>Cannonball Restaurant</strong> (Apr 8 dinner): <a href="https://cannonballrestaurant.com/" target="_blank">cannonballrestaurant.com</a> &middot; essential to book ahead.<br>
+        <strong>House of Bruar</strong>: Walk-in only, open daily 9am&ndash;5:30pm, no reservation needed. &#x1F4CD; <a href="https://www.houseofbruar.com/" target="_blank">houseofbruar.com</a>
       </div>
     </div>
   </div>
 
   <!-- EDINBURGH PARKING -->
-  <div class="section-head" style="margin-top:28px;"><h2>🚗 Edinburgh City Parking — Apr 8</h2><span>3 best options · all walkable to Royal Mile</span></div>
+  <div class="section-head" style="margin-top:28px;"><h2>&#x1F697; Edinburgh City Parking &mdash; Apr 7&ndash;9</h2><span>3 best options &middot; all walkable to Royal Mile</span></div>
   <div class="parking-grid">
     <div class="park-card">
-      <div class="park-badge badge-best">⭐ BEST FOR CASTLE</div>
+      <div class="park-badge badge-best">&#x2B50; BEST FOR CASTLE</div>
       <div class="park-name"><a href="https://www.ncp.co.uk/find-a-car-park/car-parks/edinburgh-castle-terrace-630027/" target="_blank">NCP Castle Terrace</a></div>
-      <div class="park-dist">📍 Castle Terrace · 7 min walk to Edinburgh Castle</div>
-      <div class="park-price">~£35<small>/day · ~€41</small></div>
-      <div class="park-notes">750 spaces · open 24/7 · pre-book via NCP app for cheaper rates · Edinburgh Castle gives a stamp for a parking discount (max 5 hrs). Standard hire cars fit fine. Height 2.1m max.</div>
+      <div class="park-dist">&#x1F4CD; Castle Terrace &middot; 7 min walk to Edinburgh Castle</div>
+      <div class="park-price">~&pound;35<small>/day &middot; ~&euro;41</small></div>
+      <div class="park-notes">750 spaces &middot; open 24/7 &middot; pre-book via NCP app for cheaper rates. Height 2.1m max.</div>
     </div>
     <div class="park-card">
       <div class="park-badge badge-central">CENTRAL</div>
       <div class="park-name"><a href="https://www.q-park.co.uk/en-gb/cities/edinburgh/capital-square/" target="_blank">Q-Park Capital Square</a></div>
-      <div class="park-dist">📍 West Approach Rd · 12 min walk to Royal Mile</div>
-      <div class="park-price">~£30<small>/day · ~€35</small></div>
-      <div class="park-notes">Pre-book online for best rates. 24/7. ⚠️ Just inside Edinburgh's Low Emission Zone — modern rental cars are fine, but confirm with your hire company. Check your registration at lowemissionzones.scot.</div>
+      <div class="park-dist">&#x1F4CD; West Approach Rd &middot; 12 min walk to Royal Mile</div>
+      <div class="park-price">~&pound;30<small>/day &middot; ~&euro;35</small></div>
+      <div class="park-notes">Pre-book online for best rates. 24/7. Inside Edinburgh&rsquo;s Low Emission Zone &mdash; modern rental cars are fine.</div>
     </div>
     <div class="park-card">
-      <div class="park-badge badge-cheap">💰 CHEAPEST</div>
+      <div class="park-badge badge-cheap">&#x1F4B0; CHEAPEST</div>
       <div class="park-name"><a href="https://www.apcoa.co.uk/parking-in/edinburgh/" target="_blank">APCOA St Johns Hill</a></div>
-      <div class="park-dist">📍 St Johns Hill · 5 min walk to Holyrood / Royal Mile</div>
-      <div class="park-price">~£24<small>/day · ~€28</small></div>
-      <div class="park-notes">Best value near Old Town. Good for the Holyrood end of the Royal Mile and National Museum. Pre-book online. Slightly further from Castle Terrace end.</div>
+      <div class="park-dist">&#x1F4CD; St Johns Hill &middot; 5 min walk to Holyrood / Royal Mile</div>
+      <div class="park-price">~&pound;24<small>/day &middot; ~&euro;28</small></div>
+      <div class="park-notes">Best value near Old Town. Good for the Holyrood end of the Royal Mile and National Museum.</div>
     </div>
   </div>
   <div class="park-tip">
-    💡 <strong>Best strategy for Apr 8:</strong> Your hotel will likely offer parking at ~£7–9/night — far cheaper than city car parks. Leave the car there and walk or take a short taxi to start your day. Edinburgh's Old Town is best explored entirely on foot anyway. <strong>Free street parking</strong> before 12:30 on Sundays in most central zones (Apr 8 is a Wednesday — paid zones apply from 8:30am). Edinburgh's Low Emission Zone (LEZ) covers the centre — virtually all modern rental cars comply.
+    &#x1F4A1; <strong>Best strategy:</strong> Your hotel will likely offer parking at ~&pound;7&ndash;9/night &mdash; far cheaper than city car parks. Leave the car there and walk or take a short taxi. Edinburgh&rsquo;s Old Town is best explored entirely on foot.
   </div>
 
   <!-- LEGEND -->
@@ -176,10 +316,10 @@
   <div class="filter-bar" id="filter-bar">
     <span class="filter-lbl">Show</span>
     <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="hp">🧙 Harry Potter</button>
-    <button class="filter-btn" data-filter="tweed">🧥 Posh Clothes</button>
-    <button class="filter-btn" data-filter="castle-hike">🏰 Castles &amp; Hikes</button>
-    <button class="filter-btn" data-filter="accommodation">🛏️ Accommodation</button>
+    <button class="filter-btn" data-filter="hp">&#x1F9D9; Harry Potter</button>
+    <button class="filter-btn" data-filter="tweed">&#x1F9E5; Posh Clothes</button>
+    <button class="filter-btn" data-filter="castle-hike">&#x1F3F0; Castles &amp; Hikes</button>
+    <button class="filter-btn" data-filter="accommodation">&#x1F6CF;&#xFE0F; Accommodation</button>
   </div>
 
   <!-- TIMELINE -->
@@ -187,545 +327,566 @@
 
     <!-- APR 2 -->
     <div class="day" id="day-2">
-      <div class="day-lbl"><div class="day-num">2</div><span class="day-wday">Thu · Apr</span></div>
+      <div class="day-lbl"><div class="day-num">2</div><span class="day-wday">Thu &middot; Apr</span></div>
       <div class="day-dot"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Departure — Budapest to Edinburgh</div><div class="card-loc">Budapest BUD → Edinburgh EDI — arrive midnight, sleep near airport</div></div>
-          <div class="card-cost"><strong>€673</strong><span>flights for 3</span></div>
+          <div><div class="card-title">Departure &mdash; Budapest to Edinburgh</div><div class="card-loc">Budapest BUD &rarr; Edinburgh EDI &mdash; arrive midnight, sleep near airport</div></div>
+          <div class="card-cost"><strong>&euro;673</strong><span>flights for 3</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">21:55</div><div class="p-icon">✈️</div>
-            <div class="p-body"><div class="p-name">Depart Budapest BUD</div><div class="p-desc">~3 hr flight · Edinburgh BST is 1 hr behind Budapest CEST · Arrive ~midnight · Pick up car at airport in the morning</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">€224<small>/person</small></div></div>
+            <div class="p-time">21:55</div><div class="p-icon">&#x2708;&#xFE0F;</div>
+            <div class="p-body"><div class="p-name">Depart Budapest BUD</div><div class="p-desc">~3 hr flight &middot; Edinburgh BST is 1 hr behind Budapest CEST &middot; Arrive ~midnight &middot; Pick up car at airport in the morning</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&euro;224<small>/person</small></div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast / Dinner</span><span class="meal-name">At home or BUD airport before flight</span></div><div class="meal-cost">~€15–30</div></div>
-          <div class="meal-block"><div class="meal-ico">😴</div><div class="meal-info"><span class="meal-lbl">Note</span><span class="meal-name">No Edinburgh city visit on arrival — straight to hotel</span></div><div class="meal-cost">—</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast / Dinner</span><span class="meal-name">At home or BUD airport before flight</span></div><div class="meal-cost">~&euro;15&ndash;30</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F634;</div><div class="meal-info"><span class="meal-lbl">Note</span><span class="meal-name">No Edinburgh city visit on arrival &mdash; straight to hotel</span></div><div class="meal-cost">&mdash;</div></div>
         </div>
         <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.hilton.com/en/hotels/edihxhx-hampton-edinburgh-airport/" target="_blank">Hampton by Hilton Edinburgh Airport</a> — 5 Almond Avenue, Ingliston</div>
-            <div class="hotel-sub">Walking distance to terminal · free hot breakfast included · 24-hr bar · fitness centre · already reserved ✓</div>
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.hilton.com/en/hotels/edihxhx-hampton-edinburgh-airport/" target="_blank">Hampton by Hilton Edinburgh Airport</a> &mdash; 5 Almond Avenue, Ingliston</div>
+            <div class="hotel-sub">Walking distance to terminal &middot; free hot breakfast included &middot; 24-hr bar &middot; fitness centre &middot; already reserved &#x2713;</div>
           </div></div>
-          <div class="hotel-price">€65–90 / room</div>
+          <div class="hotel-price">&euro;65&ndash;90 / room</div>
         </div>
       </div>
     </div>
 
     <!-- APR 3 -->
     <div class="day" id="day-3">
-      <div class="day-lbl"><div class="day-num">3</div><span class="day-wday">Fri · Apr</span></div>
+      <div class="day-lbl"><div class="day-num">3</div><span class="day-wday">Fri &middot; Apr</span></div>
       <div class="day-dot"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Pick Up Car → Culross → House of Bruar → Glencoe</div><div class="card-loc">Edinburgh Airport → Culross (Fife) → House of Bruar (A9, Perthshire) → Glencoe</div></div>
-          <div class="card-cost"><strong>~€150–185</strong><span>for 3 incl. all meals</span></div>
+          <div><div class="card-title">Pick Up Car &rarr; Culross &rarr; House of Bruar &rarr; Glencoe</div><div class="card-loc">Edinburgh Airport &rarr; Culross (Fife) &rarr; House of Bruar (A9, Perthshire) &rarr; Glencoe</div></div>
+          <div class="card-cost"><strong>~&euro;150&ndash;185</strong><span>for 3 incl. all meals</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">11:00</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Pick up rental car at <a href="https://www.edinburgh.gov.uk/directory-record/1114132/ingliston-park-and-ride" target="_blank">Ingliston Park & Ride</a> — head straight north, no city stop</div><div class="p-desc">Short walk from Hampton · car rental offices on Eastfield Road next to the P&R · ⚠️ Note: overnight parking is not permitted at the P&R itself — no issue as you're staying at the hotel</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">11:00</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Pick up rental car at Edinburgh Airport &mdash; head straight north</div><div class="p-desc">Short walk from Hampton &middot; car rental offices at EDI &middot; no overnight parking issue as you&rsquo;re staying at the hotel</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">11:45</div><div class="p-icon">🏘️</div>
+            <div class="p-time">11:45</div><div class="p-icon">&#x1F3D8;&#xFE0F;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.nts.org.uk/visit/places/culross" target="_blank">Culross — Perfectly Preserved Medieval Village</a></div>
-              <div class="p-desc">Cobbled streets &amp; painted merchant houses unchanged since 1600s · Outlander "Cranesmuir" filming location · Free to walk around · 1.5 hrs · first stop of the trip!</div>
+              <div class="p-name"><a href="https://www.nts.org.uk/visit/places/culross" target="_blank">Culross &mdash; Perfectly Preserved Medieval Village</a></div>
+              <div class="p-desc">Cobbled streets &amp; painted merchant houses unchanged since 1600s &middot; Outlander &ldquo;Cranesmuir&rdquo; filming location &middot; Free to walk around &middot; 1.5 hrs</div>
               <div class="p-tags"><span class="tag tag-castle">CASTLE &amp; HISTORY</span><span class="tag tag-free">FREE to explore</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNEi5I0Q3j4mx1TTj0bJiOwl1QTqL3JQC72Cdg3NnapDc7TOMci8T6rvKxGkTwzSmkSQ0AgnHpDV0XlszmMhr0jkom69Hu_Ra6QRak51vMlmXXhAnhhATwp2fq68naaWzZi2qslI81uJu11iUUk=s400-w400-h300" alt="Culross" onerror="this.style.display='none'">
-              <div class="p-cost">€0</div>
-            </div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">13:15</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Drive Culross → Pitlochry (~1 hr 10 min via M90/A9)</div><div class="p-desc">North on the A9 into Perthshire — Pitlochry is a charming Highland town right on the route</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">13:15</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Culross &rarr; Pitlochry (~1 hr 10 min via M90/A9)</div><div class="p-desc">North on the A9 into Perthshire &mdash; Pitlochry is a charming Highland town right on the route</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">14:25</div><div class="p-icon">🧶</div>
+            <div class="p-time">14:25</div><div class="p-icon">&#x1F9F6;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.macnaughtonsofpitlochry.com/" target="_blank">Pitlochry — Macnaughtons (est. 1835) &amp; Amor Cashmere &amp; Tweed</a></div>
-              <div class="p-desc">Two excellent tweed shops in the town centre · Macnaughtons is one of Scotland's oldest retailers (1835!) — Harris Tweed jackets, cashmere, highland wear · Amor stocks exclusive tweed from UK's oldest mills · 45 min browse · open daily</div>
+              <div class="p-name"><a href="https://www.macnaughtonsofpitlochry.com/" target="_blank">Pitlochry &mdash; Macnaughtons (est. 1835) &amp; Tweed Shops</a></div>
+              <div class="p-desc">Two excellent tweed shops in the town centre &middot; Macnaughtons is one of Scotland&rsquo;s oldest retailers (1835!) &mdash; Harris Tweed jackets, cashmere, highland wear &middot; 45 min browse</div>
               <div class="p-tags"><span class="tag tag-tweed">TWEED</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€0<small>free entry</small></div></div>
+            <div class="p-right"><div class="p-cost">&euro;0<small>free entry</small></div></div>
           </div>
           <div class="prog">
-            <div class="p-time">15:10</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Drive Pitlochry → House of Bruar (~15 min via A9 north)</div><div class="p-desc">Just 9 miles north on the same road</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">15:10</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Pitlochry &rarr; House of Bruar (~15 min via A9 north)</div><div class="p-desc">Just 9 miles north on the same road</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">15:25</div><div class="p-icon">🧶</div>
+            <div class="p-time">15:25</div><div class="p-icon">&#x1F9F6;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.houseofbruar.com/" target="_blank">House of Bruar ⭐ — Scotland's Premier Country Store</a></div>
-              <div class="p-desc">Exactly halfway Edinburgh–Inverness on the A9 · UK's largest Knitwear Hall — Harris Tweed, cashmere, lambswool &amp; tweed · ⭐ Don't miss the large green <strong>Sale Barn</strong> behind the main building — heavily discounted quality tweed &amp; knitwear · Food Hall for tea/coffee · No reservation needed · Open daily 9am–5:30pm</div>
+              <div class="p-name"><a href="https://www.houseofbruar.com/" target="_blank">House of Bruar &#x2B50; &mdash; Scotland&rsquo;s Premier Country Store</a></div>
+              <div class="p-desc">Exactly halfway Edinburgh&ndash;Inverness on the A9 &middot; UK&rsquo;s largest Knitwear Hall &mdash; Harris Tweed, cashmere, lambswool &amp; tweed &middot; &#x2B50; Don&rsquo;t miss the large green <strong>Sale Barn</strong> behind the main building &mdash; heavily discounted quality tweed &amp; knitwear &middot; Food Hall for tea/coffee &middot; No reservation needed &middot; Open daily 9am&ndash;5:30pm</div>
               <div class="p-tags"><span class="tag tag-tweed">TWEED</span><span class="tag tag-food">LOCAL CUISINE</span><span class="tag tag-free">NO BOOKING NEEDED</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNHKlxKqADCiqN3j9B5CDK_GfSsUU0pGY5D0IDy2LHX6GKf5zqBolLSYhIDEcHJMaVRmXAV6Ps1ELXSxAGfh_GV2L5mE-OwYnjf80FGSSGfuatPPe0LL4SrN-vqFHq7Q1j_Nw06pjB_Vj3Npw=s400-w400-h300" alt="House of Bruar" onerror="this.style.display='none'">
-              <div class="p-cost">€0<small>free entry</small></div>
-            </div>
+            <div class="p-right"><div class="p-cost">&euro;0<small>free entry</small></div></div>
           </div>
           <div class="prog">
-            <div class="p-time">16:30</div><div class="p-icon">🥾</div>
+            <div class="p-time">16:30</div><div class="p-icon">&#x1F97E;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.houseofbruar.com/pages/falls-of-bruar" target="_blank">Falls of Bruar — Gorge Walk</a></div>
-              <div class="p-desc">Free circular walk right next door · 1 hr · beautiful forested gorge, stone bridges &amp; cascading waterfalls · flat-to-moderate · ≤4 hrs ✓</div>
+              <div class="p-name"><a href="https://www.houseofbruar.com/pages/falls-of-bruar" target="_blank">Falls of Bruar &mdash; Gorge Walk</a></div>
+              <div class="p-desc">Free circular walk right next door &middot; 1 hr &middot; beautiful forested gorge, stone bridges &amp; cascading waterfalls &middot; flat-to-moderate &middot; &le;4 hrs &#x2713;</div>
               <div class="p-tags"><span class="tag tag-hike">HIKING &lt;4 HRS</span><span class="tag tag-free">FREE</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€0</div></div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">17:30</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Drive House of Bruar → Glencoe (~2 hrs via A9/A82)</div><div class="p-desc">West at Perth then A82 north through Rannoch Moor — one of Europe's most dramatic drives</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">17:30</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive House of Bruar &rarr; Glencoe (~2 hrs via A9/A82)</div><div class="p-desc">West at Perth then A82 north through Rannoch Moor &mdash; one of Europe&rsquo;s most dramatic drives</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">19:30</div><div class="p-icon">🍲</div>
+            <div class="p-time">19:30</div><div class="p-icon">&#x1F372;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.clachaig.com/" target="_blank">Arrive Glencoe · Dinner at Clachaig Inn</a></div>
-              <div class="p-desc">Vegetarian haggis · Cullen skink · game casserole · ⚠️ Must check in to hostel by 21:30!</div>
+              <div class="p-name"><a href="https://www.clachaig.com/" target="_blank">Arrive Glencoe &middot; Dinner at Clachaig Inn</a></div>
+              <div class="p-desc">Vegetarian haggis &middot; Cullen skink &middot; game casserole &middot; classic Highland pub atmosphere</div>
               <div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/places/ANXAkqFim_-S3krOyRW4S_fiyKRnuTF9VPEaWOTApR3fBj6UALP0pbEVgf7EJi9YRNOAAgkhg8_wsziHvhp_CdX7qYo7j-FBkwVKjD8=s400-w400-h300" alt="Clachaig" onerror="this.style.display='none'">
-              <div class="p-cost">~€51<small>3×~€17</small></div>
-            </div>
+            <div class="p-right"><div class="p-cost">~&euro;51<small>3&times;~&euro;17</small></div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hampton by Hilton — free hot breakfast included · waffles, pastries, hot options</span></div><div class="meal-cost">FREE ✓</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">House of Bruar Food Hall · fresh Scottish produce · ~14:35 arrival</span></div><div class="meal-cost">~€30</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hampton by Hilton &mdash; free hot breakfast included &middot; waffles, pastries, hot options</span></div><div class="meal-cost">FREE &#x2713;</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">House of Bruar Food Hall &middot; fresh Scottish produce</span></div><div class="meal-cost">~&euro;30</div></div>
         </div>
         <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Ballachulish Hotel</a> — on the shores of Loch Linnhe</div>
-            <div class="hotel-sub">Recently refurbished · FISH restaurant on-site · free parking · loch &amp; mountain views · 5 min from Glencoe valley</div>
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Ballachulish Hotel</a> &mdash; on the shores of Loch Linnhe</div>
+            <div class="hotel-sub">Recently refurbished &middot; FISH restaurant on-site &middot; free parking &middot; loch &amp; mountain views &middot; 5 min from Glencoe valley</div>
           </div></div>
-          <div class="hotel-price">€95–130 / room</div>
+          <div class="hotel-price">&euro;95&ndash;130 / room</div>
         </div>
       </div>
     </div>
 
     <!-- APR 4 -->
     <div class="day" id="day-4">
-      <div class="day-lbl"><div class="day-num">4</div><span class="day-wday">Sat · Apr</span></div>
+      <div class="day-lbl"><div class="day-num">4</div><span class="day-wday">Sat &middot; Apr</span></div>
       <div class="day-dot"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Glencoe Hiking Day</div><div class="card-loc">Glencoe Valley — Three Sisters &amp; Hidden Valley</div></div>
-          <div class="card-cost"><strong>~€65–80</strong><span>for 3 incl. all meals</span></div>
+          <div><div class="card-title">Glencoe Hiking Day</div><div class="card-loc">Glencoe Valley &mdash; Three Sisters &amp; Hidden Valley</div></div>
+          <div class="card-cost"><strong>~&euro;65&ndash;80</strong><span>for 3 incl. all meals</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">08:30</div><div class="p-icon">🌄</div>
+            <div class="p-time">08:30</div><div class="p-icon">&#x1F304;</div>
             <div class="p-body">
               <div class="p-name"><a href="https://maps.google.com/?cid=9784445770673244509" target="_blank">Three Sisters Viewpoint</a></div>
-              <div class="p-desc">HP: Prisoner of Azkaban landscape · Morning light on the ridge · 30 min · roadside pull-over · Free</div>
+              <div class="p-desc">HP: Prisoner of Azkaban landscape &middot; Morning light on the ridge &middot; 30 min &middot; roadside pull-over &middot; Free</div>
               <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span><span class="tag tag-free">FREE</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNHuJZ8FcxB5elL5ktuu3q-Q3M7WTZDmEvnbEhzkCVw2LPKZOGBpTK_xxXNWEeSgxw3Ebh-twU7vz0NvaS0_khlqofVe6juQ-RaItONnL2xPhc3xcap6x60ugvs8vjs4XvTm7xpujIwfHkzPaQ=s400-w400-h300" alt="Three Sisters" onerror="this.style.display='none'">
-              <div class="p-cost">€0</div>
-            </div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">09:30</div><div class="p-icon">🥾</div>
+            <div class="p-time">09:30</div><div class="p-icon">&#x1F97E;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.walkhighlands.co.uk/fortwilliam/lostvalley.shtml" target="_blank">Hidden Valley (Lost Valley) Hike ⭐</a></div>
-              <div class="p-desc">2.5–3 hrs return · some light scrambling · secret glacial plateau used by Macdonald clan to hide cattle · Waterproof boots essential · ≤4 hrs ✓</div>
+              <div class="p-name"><a href="https://www.walkhighlands.co.uk/fortwilliam/lostvalley.shtml" target="_blank">Hidden Valley (Lost Valley) Hike &#x2B50;</a></div>
+              <div class="p-desc">2.5&ndash;3 hrs return &middot; some light scrambling &middot; secret glacial plateau used by Macdonald clan to hide cattle &middot; Waterproof boots essential &middot; &le;4 hrs &#x2713;</div>
               <div class="p-tags"><span class="tag tag-hike">HIKING &lt;4 HRS</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNE2w1OggDRO3oN5dGWLsDXRfx0Loq8B73MfltR3_kFlamnisN098j39ieMi8CyWDg9VvjlcPqHOv8QFy05mDyil3-aTy21YZmCJCYuJzA4Xdcpjz9P21lsKa0BkhBshYx55a2H8kFXsw-6VWlAnqx4qpQ=s400-w400-h300" alt="Hidden Valley" onerror="this.style.display='none'">
-              <div class="p-cost">~€5<small>parking</small></div>
-            </div>
+            <div class="p-right"><div class="p-cost">~&euro;5<small>parking</small></div></div>
           </div>
           <div class="prog">
-            <div class="p-time">15:00</div><div class="p-icon">🌅</div>
-            <div class="p-body"><div class="p-name">Three Sisters — afternoon golden light</div><div class="p-desc">Completely different atmosphere in the valley as afternoon light catches the ridge · 30 min rest</div><div class="p-tags"><span class="tag tag-free">FREE</span></div></div>
-            <div class="p-right"><div class="p-cost">€0</div></div>
+            <div class="p-time">15:00</div><div class="p-icon">&#x1F305;</div>
+            <div class="p-body"><div class="p-name">Three Sisters &mdash; afternoon golden light</div><div class="p-desc">Completely different atmosphere in the valley as afternoon light catches the ridge &middot; 30 min rest</div><div class="p-tags"><span class="tag tag-free">FREE</span></div></div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">19:00</div><div class="p-icon">🍽️</div>
-            <div class="p-body"><div class="p-name"><a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Dinner — Ballachulish Hotel FISH Restaurant</a></div><div class="p-desc">Locally sourced seafood · Scottish produce · loch views · warm up after the hike · a la carte menu</div><div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div></div>
-            <div class="p-right"><div class="p-cost">~€60<small>3×~€20</small></div></div>
+            <div class="p-time">19:00</div><div class="p-icon">&#x1F37D;&#xFE0F;</div>
+            <div class="p-body"><div class="p-name"><a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Dinner &mdash; Ballachulish Hotel FISH Restaurant</a></div><div class="p-desc">Locally sourced seafood &middot; Scottish produce &middot; loch views &middot; warm up after the hike &middot; a la carte menu</div><div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div></div>
+            <div class="p-right"><div class="p-cost">~&euro;60<small>3&times;~&euro;20</small></div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Ballachulish Hotel breakfast (included) — hot &amp; cold buffet with haggis</span></div><div class="meal-cost">incl.</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Packed Lunch</span><span class="meal-name">Ask hotel to prepare · or buy supplies at Glencoe village shop</span></div><div class="meal-cost">~€12</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Ballachulish Hotel breakfast (included) &mdash; hot &amp; cold buffet with haggis</span></div><div class="meal-cost">incl.</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Packed Lunch</span><span class="meal-name">Ask hotel to prepare &middot; or buy supplies at Glencoe village shop</span></div><div class="meal-cost">~&euro;12</div></div>
         </div>
         <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Ballachulish Hotel — Night 2</a></div>
-            <div class="hotel-sub">Drying facilities available · access to Isles of Glencoe leisure centre · breakfast included</div>
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Ballachulish Hotel &mdash; Night 2</a></div>
+            <div class="hotel-sub">Drying facilities available &middot; access to Isles of Glencoe leisure centre &middot; breakfast included</div>
           </div></div>
-          <div class="hotel-price">€95–130 / room</div>
+          <div class="hotel-price">&euro;95&ndash;130 / room</div>
         </div>
       </div>
     </div>
 
-    <!-- APR 5 -->
+    <!-- APR 5 - RECALIBRATED: Inverness base -> Eilean Donan + Steall Falls -->
     <div class="day" id="day-5">
-      <div class="day-lbl"><div class="day-num">5</div><span class="day-wday">Sun · Apr</span></div>
+      <div class="day-lbl"><div class="day-num">5</div><span class="day-wday">Sun &middot; Apr</span></div>
       <div class="day-dot"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Glenfinnan Viaduct + Glen Nevis Gorge Walk</div><div class="card-loc">Glenfinnan → Fort William → Glen Nevis</div></div>
-          <div class="card-cost"><strong>~€190–230</strong><span>for 3 incl. all meals</span></div>
+          <div><div class="card-title">Inverness Morning &rarr; Eilean Donan Castle &rarr; Steall Falls</div><div class="card-loc">Inverness &rarr; Eilean Donan (A87) &rarr; Glen Nevis &rarr; Fort William &mdash; recalibrated from Inverness base</div></div>
+          <div class="card-cost"><strong>~&euro;190&ndash;230</strong><span>for 3 incl. all meals</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">09:00</div><div class="p-icon">🚂</div>
+            <div class="p-time">09:00</div><div class="p-icon">&#x1F6CD;&#xFE0F;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.visitscotland.com/info/towns-villages/glenfinnan-p236571" target="_blank">Glenfinnan Viaduct — The Hogwarts Express Bridge ⭐</a></div>
-              <div class="p-desc">Most iconic HP location in Scotland · 1.5 hrs · Viewpoint trail hike · Check <a href="https://westcoastrailways.co.uk/jacobite" target="_blank">Jacobite steam train times</a> (seasonal) · ARRIVE before 9:30am — car park fills by 10am!</div>
-              <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span><span class="tag tag-hike">HIKING &lt;4 HRS</span></div>
+              <div class="p-name">Inverness Morning Shopping &mdash; High Street &amp; Victorian Market</div>
+              <div class="p-desc">Inverness city centre &middot; Victorian Market covered arcade (built 1870!) &middot; independent Scottish gifts &amp; produce &middot; 45 min browse &middot; grab coffee before the drive</div>
+              <div class="p-tags"><span class="tag tag-tweed">SHOPPING</span><span class="tag tag-free">FREE to browse</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNF5_bPE_-NWJySEgiAelxQOngoi8X4CjGudzSrvoyRXk57Ad9h5U_y5-bqiZ3h3-3UupDyuhFG9B0KOo846TFZzjDbBWHa5k3yNovHSMpnQ4-Ju8VvUHmgEv51Ym7Dz0pxEujKr5MdQYp4XTZU=s400-w400-h300" alt="Glenfinnan Viaduct" onerror="this.style.display='none'">
-              <div class="p-cost">~€5<small>parking</small></div>
-            </div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">12:00</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Drive Glenfinnan → Glen Nevis (~30 min)</div><div class="p-desc">Back east through Fort William, up into the stunning glen below Ben Nevis</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">10:00</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Inverness &rarr; Eilean Donan Castle (~1 hr via A82/A87)</div><div class="p-desc">South through Loch Ness then west along dramatic Loch Duich &mdash; stunning mountain scenery all the way</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">13:00</div><div class="p-icon">🥾</div>
+            <div class="p-time">12:00</div><div class="p-icon">&#x1F3F0;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.walkhighlands.co.uk/lochaber/steall.shtml" target="_blank">Glen Nevis Gorge Walk — Steall Falls</a></div>
-              <div class="p-desc">2–3 hrs return · easy-moderate · dramatic gorge carved by glaciers · 100m waterfall at the end · Free trail · starts at Glen Nevis car park · ≤4 hrs ✓</div>
-              <div class="p-tags"><span class="tag tag-hike">HIKING &lt;4 HRS</span><span class="tag tag-free">FREE trail</span></div>
-            </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNEW_kPbxJIE4M6c2i3qnAm9NF_NelJV30-mswbuYbt63RuXniQEZHLFPsArN4tbmIDUSXuyQ9aviTDgfy7nCs4FWGwlT9u0YUlz3MpitRS-uooGXL_WOVE31uugTH5w_-xOu2_DKy8ebJ4KocY=s400-w400-h300" alt="Glen Nevis" onerror="this.style.display='none'">
-              <div class="p-cost">~€3<small>parking</small></div>
-            </div>
-          </div>
-          <div class="prog">
-            <div class="p-time">17:30</div><div class="p-icon">🐟</div>
-            <div class="p-body">
-              <div class="p-name"><a href="https://www.crannog.net/" target="_blank">Dinner — Crannog Seafood Restaurant, Fort William</a></div>
-              <div class="p-desc">Fresh loch seafood · smoked salmon · langoustines · haddock · beautiful waterfront on Loch Linnhe · Book ahead!</div>
-              <div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div>
-            </div>
-            <div class="p-right"><div class="p-cost">~€90<small>3×~€30</small></div></div>
-          </div>
-        </div>
-        <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Ballachulish Hotel breakfast before checking out</span></div><div class="meal-cost">incl.</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Packed Lunch</span><span class="meal-name">From hotel · coffee at Glenfinnan visitor centre</span></div><div class="meal-cost">~€18</div></div>
-        </div>
-        <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.booking.com/city/gb/fort-william.en-gb.html" target="_blank">B&amp;B near Fort William</a> — Innisfree Guest House or similar</div>
-            <div class="hotel-sub">Search Booking.com · many options €70–100 · breakfast often included</div>
-          </div></div>
-          <div class="hotel-price">€70–100 / room</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- APR 6 -->
-    <div class="day" id="day-6">
-      <div class="day-lbl"><div class="day-num">6</div><span class="day-wday">Mon · Apr</span></div>
-      <div class="day-dot"></div>
-      <div class="day-card">
-        <div class="card-head">
-          <div><div class="card-title">Eilean Donan Castle + Drive South to Loch Lomond</div><div class="card-loc">Fort William → Eilean Donan Castle → Loch Lomond</div></div>
-          <div class="card-cost"><strong>~€140–175</strong><span>for 3 incl. all meals</span></div>
-        </div>
-        <div class="progs">
-          <div class="prog">
-            <div class="p-time">08:30</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Drive Fort William → Eilean Donan (~1 hr via A87)</div><div class="p-desc">North through Glenshiel — one of Scotland's most dramatic glen drives</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
-          </div>
-          <div class="prog">
-            <div class="p-time">10:00</div><div class="p-icon">🏰</div>
-            <div class="p-body">
-              <div class="p-name"><a href="https://www.eileandonancastle.com/" target="_blank">Eilean Donan Castle ⭐</a></div>
-              <div class="p-desc">Scotland's most photographed castle — on an island at the meeting of 3 lochs · 1–1.5 hrs · ⚠️ Open 10am–3pm in April — book tickets online before you go!</div>
+              <div class="p-name"><a href="https://www.eileandonancastle.com/" target="_blank">Eilean Donan Castle &#x2B50;</a></div>
+              <div class="p-desc">Scotland&rsquo;s most photographed castle &mdash; on an island at the meeting of 3 lochs &middot; 1&ndash;1.5 hrs &middot; &#x26A0;&#xFE0F; Open 10am&ndash;3pm in April &mdash; <strong>book tickets online before you go!</strong> &middot; ~&euro;12/person &middot; IV40 8DX</div>
               <div class="p-tags"><span class="tag tag-castle">CASTLE &amp; HISTORY</span></div>
             </div>
             <div class="p-right">
               <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNFqBE-zV6eD7I1eZIy6bhxQOvaHj0z5ROeSkNdeI6zDoX1AqJF926ONP5bkQZUsfGdt4eLYt-jKN0aNG-qW53PQBFwFuvUwUs0kglSrC-5yl1oOI7QTCy9NdP-25qPRbDyGw5pC2mAYNeDH1QU=s400-w400-h300" alt="Eilean Donan" onerror="this.style.display='none'">
-              <div class="p-cost">~€37<small>3×~€12</small></div>
+              <div class="p-cost">~&euro;37<small>3&times;~&euro;12</small></div>
             </div>
           </div>
           <div class="prog">
-            <div class="p-time">12:00</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Long drive south: Eilean Donan → Loch Lomond (~2.5 hrs via A87/A82)</div><div class="p-desc">Back through Glencoe (different light second time!) then south along Loch Lomond</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">14:00</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Eilean Donan &rarr; Glen Nevis (~1 hr 15 min via A87/A82)</div><div class="p-desc">East through Glenshiel &mdash; one of Scotland&rsquo;s most dramatic glen drives &mdash; then south to Fort William &amp; up into Glen Nevis</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">15:30</div><div class="p-icon">🌊</div>
+            <div class="p-time">15:30</div><div class="p-icon">&#x1F97E;</div>
             <div class="p-body">
-              <div class="p-name">Luss — Loch Lomond afternoon stop</div>
-              <div class="p-desc">Walk along the loch shore · village cafés · 45 min · then settle into your hotel for the evening</div>
-              <div class="p-tags"><span class="tag tag-free">FREE</span></div>
+              <div class="p-name"><a href="https://www.walkhighlands.co.uk/lochaber/steall.shtml" target="_blank">Glen Nevis Steall Falls Gorge Walk &#x2B50; &mdash; HP: Goblet of Fire</a></div>
+              <div class="p-desc">Harry Potter: Goblet of Fire Triwizard Tournament was filmed in this glen! &middot; Dramatic gorge carved by glaciers &middot; 120m waterfall at the end (one of Scotland&rsquo;s tallest) &middot; 2&ndash;3 hrs return &middot; easy-moderate &middot; FREE trail &middot; starts at Glen Nevis lower car park &middot; PH33 6SY</div>
+              <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span><span class="tag tag-hike">HIKING &lt;4 HRS</span><span class="tag tag-free">FREE</span></div>
             </div>
             <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNHl-aslfjqOyNz9RN1fQyiGByOhNnXqZzZfCDo65rxxwcKvRcHchSLNR-fLpApnL_KLC25P5fiftKryVxAtSs9WSr7SjA_oMMEh2fNSrDwg6g3Ot9w7B7P4QZj5ZdeYWAlk19zi3KGmq5xOEkI=s400-w400-h300" alt="Loch Lomond" onerror="this.style.display='none'">
-              <div class="p-cost">€0</div>
+              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNEW_kPbxJIE4M6c2i3qnAm9NF_NelJV30-mswbuYbt63RuXniQEZHLFPsArN4tbmIDUSXuyQ9aviTDgfy7nCs4FWGwlT9u0YUlz3MpitRS-uooGXL_WOVE31uugTH5w_-xOu2_DKy8ebJ4KocY=s400-w400-h300" alt="Glen Nevis Steall Falls" onerror="this.style.display='none'">
+              <div class="p-cost">~&euro;3<small>parking</small></div>
             </div>
           </div>
           <div class="prog">
-            <div class="p-time">19:30</div><div class="p-icon">🍽️</div>
-            <div class="p-body"><div class="p-name">Dinner — Inn at Luss or Drovers Inn, Inverarnan</div><div class="p-desc">Traditional Highland pub food · haggis, neeps &amp; tatties · smoked salmon · warm atmosphere by the loch</div><div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div></div>
-            <div class="p-right"><div class="p-cost">~€55<small>3×~€18</small></div></div>
+            <div class="p-time">19:00</div><div class="p-icon">&#x1F41F;</div>
+            <div class="p-body">
+              <div class="p-name"><a href="https://www.crannog.net/" target="_blank">Dinner &mdash; Crannog Seafood Restaurant, Fort William</a></div>
+              <div class="p-desc">Fresh loch seafood &middot; smoked salmon &middot; langoustines &middot; haddock &middot; beautiful waterfront on Loch Linnhe &middot; Book ahead!</div>
+              <div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div>
+            </div>
+            <div class="p-right"><div class="p-cost">~&euro;90<small>3&times;~&euro;30</small></div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">B&amp;B Fort William (often included) — full Scottish</span></div><div class="meal-cost">incl. or ~€24</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Eilean Donan visitor centre café or packed</span></div><div class="meal-cost">~€25</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">B&amp;B / hotel near Inverness before checking out</span></div><div class="meal-cost">incl. or ~&euro;25</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Eilean Donan visitor centre caf&eacute; or packed lunch from B&amp;B</span></div><div class="meal-cost">~&euro;25</div></div>
         </div>
         <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.booking.com/region/gb/loch-lomond.en-gb.html" target="_blank">Hotel near Luss / Balloch — Loch Lomond area</a></div>
-            <div class="hotel-sub">Search Booking.com · easy 45 min drive to Edinburgh next morning · avoids a very long drive day</div>
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.booking.com/city/gb/fort-william.en-gb.html" target="_blank">B&amp;B near Fort William</a> &mdash; Innisfree Guest House or similar</div>
+            <div class="hotel-sub">Search Booking.com &middot; many options &euro;70&ndash;100 &middot; breakfast often included</div>
           </div></div>
-          <div class="hotel-price">€70–110 / room</div>
+          <div class="hotel-price">&euro;70&ndash;100 / room</div>
         </div>
       </div>
     </div>
 
-    <!-- APR 7 -->
-    <div class="day" id="day-7">
-      <div class="day-lbl"><div class="day-num">7</div><span class="day-wday">Tue · Apr</span></div>
+    <!-- APR 6 - RECALIBRATED: Rannoch Moor HP + Luss + Callander -->
+    <div class="day" id="day-6">
+      <div class="day-lbl"><div class="day-num">6</div><span class="day-wday">Mon &middot; Apr</span></div>
       <div class="day-dot"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Loch Lomond Morning Walk + Arrive Edinburgh</div><div class="card-loc">Loch Lomond → Edinburgh (45 min drive)</div></div>
-          <div class="card-cost"><strong>~€100–130</strong><span>for 3 incl. all meals</span></div>
+          <div><div class="card-title">Rannoch Moor HP Viewpoint &rarr; Luss &rarr; Callander</div><div class="card-loc">Fort William &rarr; Rannoch Moor (A82) &rarr; Luss Loch Lomond &rarr; Callander charity shops</div></div>
+          <div class="card-cost"><strong>~&euro;100&ndash;130</strong><span>for 3 incl. all meals</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">09:00</div><div class="p-icon">🥾</div>
+            <div class="p-time">09:00</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Fort William &rarr; Rannoch Moor (~45 min via A82 south)</div><div class="p-desc">South on the A82 through stunning Glencoe then onto the open Rannoch Moor plateau</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">10:00</div><div class="p-icon">&#x1FA84;</div>
             <div class="p-body">
-              <div class="p-name">Luss Loch Shore Walk</div>
-              <div class="p-desc">Easy 1.5–2 hr walk around Luss village and along the loch shore · flat paths · no technical skill needed · beautiful morning light on the water · ≤4 hrs ✓</div>
+              <div class="p-name"><a href="https://maps.google.com/?q=PA36+4AG" target="_blank">Rannoch Moor HP Viewpoint &mdash; Deathly Hallows Pt 1 &#x2B50;</a></div>
+              <div class="p-desc">Harry Potter: Deathly Hallows Part 1 was filmed on this bleak, beautiful moorland &middot; Pull over at A82 Bridge of Orchy area (PA36 4AG) &middot; 20 min atmospheric stop &middot; FREE &middot; Vast peat bog stretching to the horizon &mdash; otherworldly</div>
+              <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span><span class="tag tag-free">FREE</span></div>
+            </div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">10:30</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Continue south &rarr; Luss, Loch Lomond (~1 hr 15 min via A82)</div><div class="p-desc">South along the A82, joining the western shore of Loch Lomond &mdash; stunning views all the way to Luss village</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">12:00</div><div class="p-icon">&#x1F30A;</div>
+            <div class="p-body">
+              <div class="p-name"><a href="https://maps.google.com/?q=Luss,+Loch+Lomond" target="_blank">Luss &mdash; Loch Lomond Shore Walk</a></div>
+              <div class="p-desc">Walk along the loch shore through the pretty village of Luss &middot; 1&ndash;1.5 hrs &middot; flat grassy paths along the water&rsquo;s edge &middot; village caf&eacute;s for lunch &middot; FREE &middot; Possibly the most beautiful spot in Scotland</div>
               <div class="p-tags"><span class="tag tag-hike">HIKING &lt;4 HRS</span><span class="tag tag-free">FREE</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€0</div></div>
+            <div class="p-right">
+              <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNHl-aslfjqOyNz9RN1fQyiGByOhNnXqZzZfCDo65rxxwcKvRcHchSLNR-fLpApnL_KLC25P5fiftKryVxAtSs9WSr7SjA_oMMEh2fNSrDwg6g3Ot9w7B7P4QZj5ZdeYWAlk19zi3KGmq5xOEkI=s400-w400-h300" alt="Loch Lomond Luss" onerror="this.style.display='none'">
+              <div class="p-cost">&euro;0</div>
+            </div>
           </div>
           <div class="prog">
-            <div class="p-time">11:30</div><div class="p-icon">🚗</div>
-            <div class="p-body"><div class="p-name">Drive Loch Lomond → Edinburgh (~45 min via A82/M8)</div><div class="p-desc">Easy drive south into the city · check in to your Edinburgh hotel · rest and refresh</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-time">14:00</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Luss &rarr; Callander (~45 min via A811/A84)</div><div class="p-desc">East through the Trossachs to charming Callander &mdash; gateway to the Highlands with great charity shops</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">14:00</div><div class="p-icon">🚶</div>
-            <div class="p-body"><div class="p-name">Afternoon stroll — Princes Street Gardens &amp; New Town</div><div class="p-desc">Gentle orientation walk · views up to Edinburgh Castle · George Street · St Andrew Square · rest your legs after the big Highland days</div><div class="p-tags"><span class="tag tag-free">FREE</span></div></div>
-            <div class="p-right"><div class="p-cost">€0</div></div>
+            <div class="p-time">15:00</div><div class="p-icon">&#x1F6CD;&#xFE0F;</div>
+            <div class="p-body">
+              <div class="p-name">Callander Charity Shop Browse</div>
+              <div class="p-desc">Callander has excellent charity shops along its main street &middot; Cancer Research UK &middot; PDSA &middot; Strathcarron Hospice &middot; Often fantastic tweed pieces donated by Highland estates &middot; 45 min browse &middot; FREE to look!</div>
+              <div class="p-tags"><span class="tag tag-tweed">TWEED HUNTING</span><span class="tag tag-free">FREE to browse</span></div>
+            </div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">19:00</div><div class="p-icon">🍽️</div>
-            <div class="p-body"><div class="p-name"><a href="https://www.howies.uk.com/" target="_blank">Dinner — Howie's Edinburgh</a></div><div class="p-desc">Classic Scottish bistro · haggis, neeps &amp; tatties · cranachan dessert · relaxed atmosphere · reasonable prices · early night before the full Edinburgh day!</div><div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div></div>
-            <div class="p-right"><div class="p-cost">~€60<small>3×~€20</small></div></div>
+            <div class="p-time">19:00</div><div class="p-icon">&#x1F41F;</div>
+            <div class="p-body"><div class="p-name"><a href="https://www.mhor.net/mhor-fish" target="_blank">Dinner &mdash; Mhor Fish, Callander</a></div><div class="p-desc">Excellent fish &amp; chips + seafood &middot; local institution &middot; warm &amp; casual &middot; fresh Scottish fish &middot; popular with locals</div><div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div></div>
+            <div class="p-right"><div class="p-cost">~&euro;55<small>3&times;~&euro;18</small></div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hotel breakfast near Loch Lomond before checkout</span></div><div class="meal-cost">incl. or ~€25</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Luss village café or Edinburgh café on arrival</span></div><div class="meal-cost">~€30</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Fort William B&amp;B (often included) &mdash; full Scottish</span></div><div class="meal-cost">incl. or ~&euro;24</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Luss village caf&eacute; on the loch shore</span></div><div class="meal-cost">~&euro;30</div></div>
         </div>
         <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.premierinn.com/gb/en/hotels/scotland/lothian/edinburgh/edinburgh-city-centre-royal-mile.html" target="_blank">Premier Inn Edinburgh City Centre</a> or <a href="https://www.pointhospitality.com/hotels/point-a-edinburgh-haymarket/" target="_blank">Point A Hotel Haymarket</a></div>
-            <div class="hotel-sub">Park the car at the hotel (~£7–9/night) · leave it there for both nights · explore on foot</div>
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.booking.com/city/gb/callander.en-gb.html" target="_blank">Hotel near Callander or Stirling</a></div>
+            <div class="hotel-sub">Search Booking.com &middot; easy 30 min drive to Falkirk next morning &middot; then 30 min to Edinburgh</div>
           </div></div>
-          <div class="hotel-price">€95–125 / room</div>
+          <div class="hotel-price">&euro;70&ndash;100 / room</div>
         </div>
       </div>
     </div>
 
-    <!-- APR 8 -->
-    <div class="day" id="day-8">
-      <div class="day-lbl"><div class="day-num">8</div><span class="day-wday">Wed · Apr</span></div>
+    <!-- APR 7 - RECALIBRATED: Kelpies + Edinburgh + Dept of Magic -->
+    <div class="day" id="day-7">
+      <div class="day-lbl"><div class="day-num">7</div><span class="day-wday">Tue &middot; Apr</span></div>
       <div class="day-dot"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Full Edinburgh Day — Harry Potter, Hiking, History &amp; Farewell Dinner</div><div class="card-loc">Edinburgh City Centre — all on foot</div></div>
-          <div class="card-cost"><strong>~€250–295</strong><span>for 3 incl. all meals</span></div>
+          <div><div class="card-title">The Kelpies (Falkirk) &rarr; Edinburgh &rarr; Department of Magic</div><div class="card-loc">Callander/Stirling &rarr; Kelpies Falkirk (FREE) &rarr; Edinburgh check-in &rarr; HP escape room evening</div></div>
+          <div class="card-cost"><strong>~&euro;120&ndash;155</strong><span>for 3 incl. all meals</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">08:30</div><div class="p-icon">⛰️</div>
+            <div class="p-time">09:15</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Callander/Stirling &rarr; Kelpies, Falkirk (~30&ndash;40 min via M9)</div><div class="p-desc">South on the M9 past Stirling Castle to Falkirk &mdash; easy drive</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">09:30</div><div class="p-icon">&#x1F40E;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.visitscotland.com/info/see-do/holyrood-park-and-arthurs-seat-p914341" target="_blank">Arthur's Seat — Morning Hike</a></div>
-              <div class="p-desc">Ancient volcanic summit right in Edinburgh · 2–3 hrs · 250m elevation · panoramic views over the whole city · Start from Holyrood Park · boots advised (can be muddy) · ≤4 hrs ✓</div>
+              <div class="p-name"><a href="https://www.thehelix.co.uk/things-to-see-do/the-kelpies/" target="_blank">The Kelpies &mdash; Helix Park, Falkirk &#x2B50;</a></div>
+              <div class="p-desc">30-metre tall steel horse heads &mdash; the world&rsquo;s largest equine sculptures &middot; FREE entry to the park &middot; Beautiful morning light &middot; 45 min &middot; FK2 7ZT &middot; Mythological water horses of Scottish folklore &middot; Spectacular at any time of day</div>
+              <div class="p-tags"><span class="tag tag-castle">SCOTTISH HERITAGE</span><span class="tag tag-free">FREE</span></div>
+            </div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">10:30</div><div class="p-icon">&#x1F697;</div>
+            <div class="p-body"><div class="p-name">Drive Kelpies &rarr; Edinburgh (~30 min via M9)</div><div class="p-desc">Quick motorway drive &mdash; arrive mid-morning &middot; check in to hotel &middot; park car (leave it for both Edinburgh nights)</div><div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">12:00</div><div class="p-icon">&#x1F6B6;</div>
+            <div class="p-body"><div class="p-name">Edinburgh Check-in + Princes Street / Royal Mile Orientation</div><div class="p-desc">Settle in &middot; gentle first stroll along Princes Street gardens &middot; views up to the Castle &middot; Royal Mile first impressions &middot; find Victoria Street for tomorrow</div><div class="p-tags"><span class="tag tag-free">FREE</span></div></div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">18:00</div><div class="p-icon">&#x1FA84;</div>
+            <div class="p-body">
+              <div class="p-name"><a href="https://www.departmentofmagic.com/" target="_blank">Department of Magic HP Escape Room &#x2B50; &mdash; BOOK AHEAD!</a></div>
+              <div class="p-desc">Edinburgh&rsquo;s most magical experience &middot; Immersive HP-themed escape room right on Blair Street (minutes from Royal Mile) &middot; ~1.5 hrs &middot; ~&euro;20&ndash;25/person &middot; Groups of 2&ndash;8 &middot; <strong>Book at departmentofmagic.com well in advance!</strong> &middot; Suitable for HP fans of all ages</div>
+              <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span></div>
+            </div>
+            <div class="p-right"><div class="p-cost">~&euro;65<small>3&times;~&euro;22</small></div></div>
+          </div>
+          <div class="prog">
+            <div class="p-time">20:00</div><div class="p-icon">&#x1F37D;&#xFE0F;</div>
+            <div class="p-body"><div class="p-name"><a href="https://www.howies.uk.com/" target="_blank">Dinner &mdash; Howie&rsquo;s Edinburgh</a></div><div class="p-desc">Classic Scottish bistro &middot; haggis, neeps &amp; tatties &middot; cranachan dessert &middot; relaxed atmosphere &middot; reasonable prices &middot; early-ish night before the big Edinburgh day!</div><div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div></div>
+            <div class="p-right"><div class="p-cost">~&euro;60<small>3&times;~&euro;20</small></div></div>
+          </div>
+        </div>
+        <div class="meal-strip">
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hotel breakfast near Callander/Stirling before checkout</span></div><div class="meal-cost">incl. or ~&euro;25</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Edinburgh caf&eacute; on arrival &middot; or near Kelpies in Falkirk</span></div><div class="meal-cost">~&euro;30</div></div>
+        </div>
+        <div class="card-hotel">
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.premierinn.com/gb/en/hotels/scotland/lothian/edinburgh/edinburgh-city-centre-royal-mile.html" target="_blank">Premier Inn Edinburgh City Centre</a> or <a href="https://www.pointhospitality.com/hotels/point-a-edinburgh-haymarket/" target="_blank">Point A Hotel Haymarket</a></div>
+            <div class="hotel-sub">Park the car at the hotel (~&pound;7&ndash;9/night) &middot; leave it there for both nights &middot; explore on foot</div>
+          </div></div>
+          <div class="hotel-price">&euro;95&ndash;125 / room</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APR 8 - UPDATED: Cannonball Restaurant dinner -->
+    <div class="day" id="day-8">
+      <div class="day-lbl"><div class="day-num">8</div><span class="day-wday">Wed &middot; Apr</span></div>
+      <div class="day-dot"></div>
+      <div class="day-card">
+        <div class="card-head">
+          <div><div class="card-title">Full Edinburgh Day &mdash; Arthur&rsquo;s Seat, Greyfriars, Castle &amp; Cannonball</div><div class="card-loc">Edinburgh City Centre &mdash; all on foot</div></div>
+          <div class="card-cost"><strong>~&euro;250&ndash;295</strong><span>for 3 incl. all meals</span></div>
+        </div>
+        <div class="progs">
+          <div class="prog">
+            <div class="p-time">08:30</div><div class="p-icon">&#x26F0;&#xFE0F;</div>
+            <div class="p-body">
+              <div class="p-name"><a href="https://www.visitscotland.com/info/see-do/holyrood-park-and-arthurs-seat-p914341" target="_blank">Arthur&rsquo;s Seat &mdash; Morning Hike</a></div>
+              <div class="p-desc">Ancient volcanic summit right in Edinburgh &middot; 2&ndash;3 hrs &middot; 250m elevation &middot; panoramic views over the whole city &middot; Start from Holyrood Park &middot; boots advised (can be muddy) &middot; &le;4 hrs &#x2713;</div>
               <div class="p-tags"><span class="tag tag-hike">HIKING &lt;4 HRS</span><span class="tag tag-free">FREE</span></div>
             </div>
             <div class="p-right">
               <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNFJW6raMPQJBsaiNL5TjxDXfse8QWiqSPqWzNn7MAhVaJsEaSLThRID5LuOVGCY97VRTSzEMQI_ciSbet-Go3amn7X-62Blez9OPU68vtlYFWZHbITn7FkGRfWy7BCtDdQ1CNs3OlzVNs7GAw=s400-w400-h300" alt="Arthur's Seat" onerror="this.style.display='none'">
-              <div class="p-cost">€0</div>
+              <div class="p-cost">&euro;0</div>
             </div>
           </div>
           <div class="prog">
-            <div class="p-time">12:00</div><div class="p-icon">⚰️</div>
+            <div class="p-time">12:00</div><div class="p-icon">&#x26B0;&#xFE0F;</div>
             <div class="p-body">
               <div class="p-name"><a href="https://greyfriarskirk.com/visit/kirkyard/" target="_blank">Greyfriars Kirkyard</a></div>
-              <div class="p-desc">Tom Riddle gravestone · McGonagall tomb · Greyfriars Bobby · 1 hr · Open 24 hrs · Free</div>
+              <div class="p-desc">Tom Riddle gravestone &middot; McGonagall tomb &middot; Greyfriars Bobby &middot; 1 hr &middot; Open 24 hrs &middot; Free</div>
               <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span><span class="tag tag-free">FREE</span></div>
             </div>
             <div class="p-right">
               <img class="p-thumb" src="https://lh3.googleusercontent.com/places/ANXAkqGhw0f4bi1nwDBWAs5xnym2w0J_SXC0Zi1S7W5-ZRebrIHRxOqGp-gZEXB3x_w05anzbDcIEaw34kwSeAHHnwoQAweqkfTue6U=s400-w400-h300" alt="Greyfriars" onerror="this.style.display='none'">
-              <div class="p-cost">€0</div>
+              <div class="p-cost">&euro;0</div>
             </div>
           </div>
           <div class="prog">
-            <div class="p-time">13:30</div><div class="p-icon">🪄</div>
+            <div class="p-time">13:30</div><div class="p-icon">&#x1FA84;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://museumcontext.com/" target="_blank">Victoria Street — Diagon Alley Inspiration</a></div>
-              <div class="p-desc">The curved, colourful street J.K. Rowling drew on for Diagon Alley · HP merch shop on 3 floors · Browse &amp; soak in the atmosphere · 1 hr</div>
+              <div class="p-name"><a href="https://museumcontext.com/" target="_blank">Victoria Street &mdash; Diagon Alley Inspiration</a></div>
+              <div class="p-desc">The curved, colourful street J.K. Rowling drew on for Diagon Alley &middot; HP merch shop on 3 floors &middot; Browse &amp; soak in the atmosphere &middot; 1 hr</div>
               <div class="p-tags"><span class="tag tag-hp">HARRY POTTER</span><span class="tag tag-free">FREE</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€0</div></div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">15:00</div><div class="p-icon">🏰</div>
+            <div class="p-time">15:00</div><div class="p-icon">&#x1F3F0;</div>
             <div class="p-body">
               <div class="p-name"><a href="https://www.edinburghcastle.scot/" target="_blank">Edinburgh Castle</a></div>
-              <div class="p-desc">Crown Jewels · Stone of Destiny · War Memorial · panoramic views over the city · 2 hrs · Book tickets online in advance!</div>
+              <div class="p-desc">Crown Jewels &middot; Stone of Destiny &middot; War Memorial &middot; panoramic views over the city &middot; 2 hrs &middot; Book tickets online in advance!</div>
               <div class="p-tags"><span class="tag tag-castle">CASTLE &amp; HISTORY</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">~€64<small>3×~€21</small></div></div>
+            <div class="p-right"><div class="p-cost">~&euro;64<small>3&times;~&euro;21</small></div></div>
           </div>
           <div class="prog">
-            <div class="p-time">17:00</div><div class="p-icon">🧶</div>
+            <div class="p-time">17:00</div><div class="p-icon">&#x1F9F6;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.thetartanweavingmill.com/" target="_blank">Tartan Weaving Mill — Royal Mile ⭐</a></div>
-              <div class="p-desc">Right next to Edinburgh Castle · 5 floors of Harris Tweed, cashmere, lambswool &amp; tartan · Working looms on-site · In-house kiltmakers · Open daily 9am–6:30pm · Free entry</div>
+              <div class="p-name"><a href="https://www.thetartanweavingmill.com/" target="_blank">Tartan Weaving Mill &mdash; Royal Mile &#x2B50;</a></div>
+              <div class="p-desc">Right next to Edinburgh Castle &middot; 5 floors of Harris Tweed, cashmere, lambswool &amp; tartan &middot; Working looms on-site &middot; In-house kiltmakers &middot; Open daily 9am&ndash;6:30pm &middot; Free entry</div>
               <div class="p-tags"><span class="tag tag-tweed">TWEED</span><span class="tag tag-free">FREE entry</span></div>
             </div>
             <div class="p-right">
               <img class="p-thumb" src="https://lh3.googleusercontent.com/place-photos/AL8-SNH7bUi9qAB2m3msMjRUv-XE2fBG3w6M-rHU_t6kCZGUBjqm3jrfB4E1ADJqCVN4YwHPBlfiFH5yCsLdlr36PimPPOvBCZGkH-Gh5JgAlVIJFvvZxlRtXW0_yCxV8K5G5LjUAOJE4SsPXJmw=s400-w400-h300" alt="Tartan Weaving Mill" onerror="this.style.display='none'">
-              <div class="p-cost">€0<small>free entry</small></div>
+              <div class="p-cost">&euro;0<small>free entry</small></div>
             </div>
           </div>
           <div class="prog">
-            <div class="p-time">17:45</div><div class="p-icon">👗</div>
+            <div class="p-time">17:45</div><div class="p-icon">&#x1F455;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.armstrongsvintage.co.uk/" target="_blank">W. Armstrong &amp; Son — Grassmarket (est. 1840) ⭐</a></div>
-              <div class="p-desc">Edinburgh's oldest vintage shop — 3 min walk from Tartan Weaving Mill · Tweed blazers, Harris Tweed coats (~£45!), kilts, knitwear · Reviewers rave about quality &amp; prices · 83 Grassmarket · Open Mon–Sat 10am–6pm, Sun 12–6pm</div>
+              <div class="p-name"><a href="https://www.armstrongsvintage.co.uk/" target="_blank">W. Armstrong &amp; Son &mdash; Grassmarket (est. 1840) &#x2B50;</a></div>
+              <div class="p-desc">Edinburgh&rsquo;s oldest vintage shop &mdash; 3 min walk from Tartan Weaving Mill &middot; Tweed blazers, Harris Tweed coats (~&pound;45!), kilts, knitwear &middot; 83 Grassmarket &middot; Open Mon&ndash;Sat 10am&ndash;6pm, Sun 12&ndash;6pm</div>
               <div class="p-tags"><span class="tag tag-tweed">VINTAGE TWEED</span></div>
             </div>
             <div class="p-right"><div class="p-cost">browse free</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">18:15</div><div class="p-icon">👗</div>
+            <div class="p-time">18:15</div><div class="p-icon">&#x1F455;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://hermanbrown.co.uk/" target="_blank">Herman Brown — Grassmarket (est. 1983)</a></div>
-              <div class="p-desc">Next door to Armstrong's · Curated vintage men's &amp; womenswear · Known for excellent tweed pieces, accessories &amp; quality finds · 151 West Port · small but beautifully selected</div>
+              <div class="p-name"><a href="https://hermanbrown.co.uk/" target="_blank">Herman Brown &mdash; Grassmarket (est. 1983)</a></div>
+              <div class="p-desc">Next door to Armstrong&rsquo;s &middot; Curated vintage men&rsquo;s &amp; womenswear &middot; Known for excellent tweed pieces, accessories &amp; quality finds &middot; 151 West Port &middot; small but beautifully selected</div>
               <div class="p-tags"><span class="tag tag-tweed">VINTAGE TWEED</span></div>
             </div>
             <div class="p-right"><div class="p-cost">browse free</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">19:30</div><div class="p-icon">🍽️</div>
+            <div class="p-time">19:30</div><div class="p-icon">&#x1F37D;&#xFE0F;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.thewitchery.com/" target="_blank">Farewell Dinner — The Witchery by the Castle ⭐</a></div>
-              <div class="p-desc">Haggis · venison · Scottish game · candlelit gothic dining room right next to the Castle · Your biggest dinner of the trip — Book well ahead, it fills up fast!</div>
+              <div class="p-name"><a href="https://cannonballrestaurant.com/" target="_blank">Farewell Dinner &mdash; Cannonball Restaurant, Castlehill &#x2B50;</a></div>
+              <div class="p-desc">Scottish whisky, haggis &amp; stunning castle views &middot; Right at the top of the Royal Mile, Castlehill &middot; Whisky &amp; Larder menu &middot; Famous for Scottish produce &middot; <strong>Book ahead at cannonballrestaurant.com</strong> &middot; ~&euro;55&ndash;75 for 3</div>
               <div class="p-tags"><span class="tag tag-food">LOCAL CUISINE</span></div>
             </div>
-            <div class="p-right">
-              <img class="p-thumb" src="https://lh3.googleusercontent.com/places/ANXAkqExbVFjr1hsf9Di_45uaBOG95kd_21yDt3-yF-ycXI9qyp4wRk62FdRyHEJWFBKGPDFSfVGKfaC990M-XEYyyYnQJemtyu-dro=s400-w400-h300" alt="The Witchery" onerror="this.style.display='none'">
-              <div class="p-cost">€70–100</div>
-            </div>
+            <div class="p-right"><div class="p-cost">&euro;55&ndash;75</div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hotel breakfast · fuel up for Arthur's Seat</span></div><div class="meal-cost">~€30</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Royal Mile café · Cullen skink soup after the hike</span></div><div class="meal-cost">~€36</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hotel breakfast &middot; fuel up for Arthur&rsquo;s Seat</span></div><div class="meal-cost">~&euro;30</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Royal Mile caf&eacute; &middot; Cullen skink soup after the hike</span></div><div class="meal-cost">~&euro;36</div></div>
         </div>
         <div class="card-hotel">
-          <div class="hotel-info"><div class="hotel-ico">🏨</div><div>
-            <div class="hotel-name"><a href="https://www.premierinn.com/gb/en/hotels/scotland/lothian/edinburgh/edinburgh-city-centre-royal-mile.html" target="_blank">Premier Inn Edinburgh City Centre — Final Night</a></div>
-            <div class="hotel-sub">Pack bags tonight · allow 45 min drive to airport tomorrow · return car at EDI</div>
+          <div class="hotel-info"><div class="hotel-ico">&#x1F3E8;</div><div>
+            <div class="hotel-name"><a href="https://www.premierinn.com/gb/en/hotels/scotland/lothian/edinburgh/edinburgh-city-centre-royal-mile.html" target="_blank">Premier Inn Edinburgh City Centre &mdash; Final Night</a></div>
+            <div class="hotel-sub">Pack bags tonight &middot; allow 45 min drive to airport tomorrow &middot; return car at EDI</div>
           </div></div>
-          <div class="hotel-price">€95–125 / room</div>
+          <div class="hotel-price">&euro;95&ndash;125 / room</div>
         </div>
       </div>
     </div>
 
     <!-- APR 9 -->
     <div class="day" id="day-9">
-      <div class="day-lbl"><div class="day-num">9</div><span class="day-wday">Thu · Apr</span></div>
+      <div class="day-lbl"><div class="day-num">9</div><span class="day-wday">Thu &middot; Apr</span></div>
       <div class="day-dot end"></div>
       <div class="day-card">
         <div class="card-head">
-          <div><div class="card-title">Edinburgh Morning + Departure 20:00</div><div class="card-loc">Edinburgh City Centre → Airport → Budapest BUD</div></div>
-          <div class="card-cost"><strong>€673</strong><span>flights (pre-paid) · ~€60 meals</span></div>
+          <div><div class="card-title">Edinburgh Morning + Departure 20:00</div><div class="card-loc">Edinburgh City Centre &rarr; Airport &rarr; Budapest BUD</div></div>
+          <div class="card-cost"><strong>&euro;673</strong><span>flights (pre-paid) &middot; ~&euro;60 meals</span></div>
         </div>
         <div class="progs">
           <div class="prog">
-            <div class="p-time">10:00</div><div class="p-icon">👗</div>
+            <div class="p-time">10:00</div><div class="p-icon">&#x1F455;</div>
             <div class="p-body">
-              <div class="p-name"><a href="https://www.armstrongsvintage.co.uk/" target="_blank">W. Armstrong &amp; Son — Last chance vintage tweed browse</a></div>
-              <div class="p-desc">Opens 10am · 83 Grassmarket · If you didn't find the right tweed piece yesterday, this is your final shot — stock changes daily · Harris Tweed coats from ~£45 · 30–45 min</div>
+              <div class="p-name"><a href="https://www.armstrongsvintage.co.uk/" target="_blank">W. Armstrong &amp; Son &mdash; Last chance vintage tweed browse</a></div>
+              <div class="p-desc">Opens 10am &middot; 83 Grassmarket &middot; If you didn&rsquo;t find the right tweed piece yesterday, this is your final shot &mdash; stock changes daily &middot; Harris Tweed coats from ~&pound;45 &middot; 30&ndash;45 min</div>
               <div class="p-tags"><span class="tag tag-tweed">VINTAGE TWEED</span></div>
             </div>
             <div class="p-right"><div class="p-cost">browse free</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">10:45</div><div class="p-icon">🏛️</div>
+            <div class="p-time">10:45</div><div class="p-icon">&#x1F3DB;&#xFE0F;</div>
             <div class="p-body">
               <div class="p-name"><a href="https://www.nms.ac.uk/national-museum-of-scotland/" target="_blank">Scottish National Museum</a></div>
-              <div class="p-desc">World-class free museum · Dolly the sheep · Scottish history &amp; nature · 2 hrs · Chambers Street, 5 min walk from Royal Mile</div>
+              <div class="p-desc">World-class free museum &middot; Dolly the sheep &middot; Scottish history &amp; nature &middot; 2 hrs &middot; Chambers Street, 5 min walk from Royal Mile</div>
               <div class="p-tags"><span class="tag tag-free">FREE</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€0</div></div>
+            <div class="p-right"><div class="p-cost">&euro;0</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">12:00</div><div class="p-icon">🛍️</div>
+            <div class="p-time">12:00</div><div class="p-icon">&#x1F6CD;&#xFE0F;</div>
             <div class="p-body">
-              <div class="p-name">Final Royal Mile shopping</div>
-              <div class="p-desc">Last chance for cashmere · shortbread · Scottish tablet · Irn-Bru to take home · souvenirs along the cobbled Royal Mile</div>
-              <div class="p-tags"><span class="tag tag-tweed">TWEED</span></div>
+              <div class="p-name">Final Royal Mile Shopping</div>
+              <div class="p-desc">Last chance for cashmere &middot; shortbread &middot; Scottish tablet &middot; Irn-Bru to take home &middot; souvenirs along the cobbled Royal Mile</div>
+              <div class="p-tags"><span class="tag tag-tweed">SHOPPING</span></div>
             </div>
             <div class="p-right"><div class="p-cost">as desired</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">14:00</div><div class="p-icon">🚗</div>
+            <div class="p-time">14:00</div><div class="p-icon">&#x1F697;</div>
             <div class="p-body">
-              <div class="p-name">Return rental car &amp; drive to Edinburgh Airport</div>
-              <div class="p-desc">Allow 45 min from city centre including car drop-off · confirm rental company drop-off deadline the night before · flight check-in opens ~18:00</div>
+              <div class="p-name">Return Rental Car &amp; Drive to Edinburgh Airport</div>
+              <div class="p-desc">Allow 45 min from city centre including car drop-off &middot; confirm rental company drop-off deadline the night before &middot; flight check-in opens ~18:00</div>
               <div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">—</div></div>
+            <div class="p-right"><div class="p-cost">&mdash;</div></div>
           </div>
           <div class="prog">
-            <div class="p-time">16:00</div><div class="p-icon">🛋️</div>
+            <div class="p-time">16:00</div><div class="p-icon">&#x1F6CB;&#xFE0F;</div>
             <div class="p-body">
               <div class="p-name">Edinburgh Airport Lounge</div>
-              <div class="p-desc">2 free lounge passes · relax before the flight · food, drinks, comfortable seating · check lounge name/location at EDI on arrival at the airport</div>
+              <div class="p-desc">2 free lounge passes &middot; relax before the flight &middot; food, drinks, comfortable seating &middot; check lounge name/location at EDI on arrival</div>
               <div class="p-tags"><span class="tag tag-free">2 FREE PASSES</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€0<small>passes used</small></div></div>
+            <div class="p-right"><div class="p-cost">&euro;0<small>passes used</small></div></div>
           </div>
           <div class="prog">
-            <div class="p-time">20:00</div><div class="p-icon">✈️</div>
+            <div class="p-time">20:00</div><div class="p-icon">&#x2708;&#xFE0F;</div>
             <div class="p-body">
-              <div class="p-name">Depart Edinburgh EDI → Budapest BUD</div>
-              <div class="p-desc">~3 hr flight · Arrive Budapest ~23:00 CEST · End of a brilliant trip!</div>
+              <div class="p-name">Depart Edinburgh EDI &rarr; Budapest BUD</div>
+              <div class="p-desc">~3 hr flight &middot; Arrive Budapest ~23:00 CEST &middot; End of a brilliant trip!</div>
               <div class="p-tags"><span class="tag tag-travel">TRAVEL</span></div>
             </div>
-            <div class="p-right"><div class="p-cost">€224<small>/person</small></div></div>
+            <div class="p-right"><div class="p-cost">&euro;224<small>/person</small></div></div>
           </div>
         </div>
         <div class="meal-strip">
-          <div class="meal-block"><div class="meal-ico">☕</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hotel breakfast before checkout</span></div><div class="meal-cost">~€30</div></div>
-          <div class="meal-block"><div class="meal-ico">🥪</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Royal Mile café · last Cullen skink of the trip!</span></div><div class="meal-cost">~€36</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x2615;</div><div class="meal-info"><span class="meal-lbl">Breakfast</span><span class="meal-name">Hotel breakfast before checkout</span></div><div class="meal-cost">~&euro;30</div></div>
+          <div class="meal-block"><div class="meal-ico">&#x1F96A;</div><div class="meal-info"><span class="meal-lbl">Lunch</span><span class="meal-name">Royal Mile caf&eacute; &middot; last Cullen skink of the trip!</span></div><div class="meal-cost">~&euro;36</div></div>
         </div>
       </div>
     </div>
@@ -734,91 +895,176 @@
   <!-- COST SUMMARY -->
   <div class="summary">
     <div class="sum-head">
-      <h2>Complete Cost Summary — 3 Travellers</h2>
-      <p>All amounts in euros. Rates: €1 = 390 HUF · £1 = €1.156. Hotel prices are per room per night. You may need 1–2 rooms depending on preference.</p>
+      <h2>Complete Cost Summary &mdash; 3 Travellers</h2>
+      <p>All amounts in euros. Rates: &euro;1 = 390 HUF &middot; &pound;1 = &euro;1.156. Hotel prices are per room per night.</p>
     </div>
     <div class="sum-grid">
       <div class="sum-cell">
-        <div class="sum-cat">✈️ Flights &amp; Transport (fixed)</div>
-        <div class="sum-row hl"><span>Flights BUD↔EDI · 87,500 HUF × 3 persons</span><span>€673</span></div>
-        <div class="sum-row hl"><span>Car rental · £555 × 1.156</span><span>€642</span></div>
-        <div class="sum-row"><span>Fuel (~850 km · ~€1.70/L)</span><span>~€90</span></div>
-        <div class="sum-row"><span>Parking — all days combined</span><span>~€25</span></div>
-        <div class="sum-sub"><span>Transport Total</span><span>~€1,430</span></div>
+        <div class="sum-cat">&#x2708;&#xFE0F; Flights &amp; Transport (fixed)</div>
+        <div class="sum-row hl"><span>Flights BUD&harr;EDI &middot; 87,500 HUF &times; 3 persons</span><span>&euro;673</span></div>
+        <div class="sum-row hl"><span>Car rental &middot; &pound;555 &times; 1.156</span><span>&euro;642</span></div>
+        <div class="sum-row"><span>Fuel (~850 km &middot; ~&euro;1.70/L)</span><span>~&euro;90</span></div>
+        <div class="sum-row"><span>Parking &mdash; all days combined</span><span>~&euro;25</span></div>
+        <div class="sum-sub"><span>Transport Total</span><span>~&euro;1,430</span></div>
       </div>
       <div class="sum-cell">
-        <div class="sum-cat">🏨 Accommodation — 7 Nights (per room)</div>
-        <div class="sum-row"><span>Night 1 · Airport Premier Inn</span><span>€65–90</span></div>
-        <div class="sum-row"><span>Nights 2–3 · Ballachulish Hotel, Glencoe (×2)</span><span>€190–260</span></div>
-        <div class="sum-row"><span>Night 4 · Fort William B&amp;B</span><span>€70–100</span></div>
-        <div class="sum-row"><span>Night 5 · Loch Lomond hotel</span><span>€70–110</span></div>
-        <div class="sum-row"><span>Nights 6–7 · Edinburgh City Centre (×2)</span><span>€190–250</span></div>
-        <div class="sum-sub"><span>Accommodation Total</span><span>€585–810</span></div>
+        <div class="sum-cat">&#x1F3E8; Accommodation &mdash; 7 Nights (per room)</div>
+        <div class="sum-row"><span>Night 1 &middot; Hampton by Hilton Airport</span><span>&euro;65&ndash;90</span></div>
+        <div class="sum-row"><span>Nights 2&ndash;3 &middot; Ballachulish Hotel (&times;2)</span><span>&euro;190&ndash;260</span></div>
+        <div class="sum-row"><span>Night 4 &middot; Fort William B&amp;B</span><span>&euro;70&ndash;100</span></div>
+        <div class="sum-row"><span>Night 5 &middot; Callander/Stirling hotel</span><span>&euro;70&ndash;100</span></div>
+        <div class="sum-row"><span>Nights 6&ndash;7 &middot; Edinburgh City Centre (&times;2)</span><span>&euro;190&ndash;250</span></div>
+        <div class="sum-sub"><span>Accommodation Total</span><span>&euro;585&ndash;810</span></div>
       </div>
       <div class="sum-cell">
-        <div class="sum-cat">🍳 Breakfasts + 🥪 Lunches (for 3 people)</div>
-        <div class="sum-row"><span>Hotel breakfasts (3 days · 3×€10)</span><span>~€90</span></div>
-        <div class="sum-row"><span>Hostel self-catering (2 days · 3×€4)</span><span>~€24</span></div>
-        <div class="sum-row"><span>B&amp;B Fort William (often included)</span><span>€0–24</span></div>
-        <div class="sum-row"><span>Johnstons Eastmill Café lunch</span><span>~€30</span></div>
-        <div class="sum-row"><span>Packed hiking lunches (2 days)</span><span>~€24</span></div>
-        <div class="sum-row"><span>City lunches Edinburgh (2 days · 3×€12)</span><span>~€72</span></div>
-        <div class="sum-row"><span>Road stop / Eilean Donan / Luss</span><span>~€50</span></div>
-        <div class="sum-sub"><span>Breakfast + Lunch Total</span><span>~€290–315</span></div>
+        <div class="sum-cat">&#x1F373; Breakfasts + &#x1F96A; Lunches (for 3 people)</div>
+        <div class="sum-row"><span>Hotel breakfasts (3 days &middot; 3&times;&euro;10)</span><span>~&euro;90</span></div>
+        <div class="sum-row"><span>Packed hiking lunches (2 days)</span><span>~&euro;24</span></div>
+        <div class="sum-row"><span>Road stop lunches / caf&eacute;s</span><span>~&euro;75</span></div>
+        <div class="sum-row"><span>City lunches Edinburgh (2 days &middot; 3&times;&euro;12)</span><span>~&euro;72</span></div>
+        <div class="sum-sub"><span>Breakfast + Lunch Total</span><span>~&euro;260&ndash;290</span></div>
       </div>
       <div class="sum-cell">
-        <div class="sum-cat">🍽️ Dinners + 🎟️ Attractions (for 3)</div>
-        <div class="sum-row"><span>The Witchery, Edinburgh (farewell)</span><span>€70–100</span></div>
-        <div class="sum-row"><span>Clachaig Inn, Glencoe</span><span>~€51</span></div>
-        <div class="sum-row"><span>Hostel self-catering (1 night)</span><span>~€20</span></div>
-        <div class="sum-row"><span>Crannog Seafood, Fort William</span><span>~€90</span></div>
-        <div class="sum-row"><span>Loch Lomond Inn dinner</span><span>~€55</span></div>
-        <div class="sum-row"><span>Howie's Edinburgh</span><span>~€60</span></div>
-        <div class="sum-row"><span>Edinburgh Castle (3 × ~€21)</span><span>~€64</span></div>
-        <div class="sum-row"><span>Eilean Donan Castle (3 × ~€12)</span><span>~€37</span></div>
-        <div class="sum-row"><span>Johnstons mill tour</span><span>€0 — FREE</span></div>
-        <div class="sum-row"><span>All hikes, Culross, Greyfriars, viewpoints</span><span>€0 — FREE</span></div>
-        <div class="sum-sub"><span>Dinner + Attractions Total</span><span>~€450–480</span></div>
+        <div class="sum-cat">&#x1F37D;&#xFE0F; Dinners + &#x1F3AB; Attractions (for 3)</div>
+        <div class="sum-row"><span>Cannonball Restaurant, Edinburgh (farewell)</span><span>&euro;55&ndash;75</span></div>
+        <div class="sum-row"><span>Clachaig Inn, Glencoe</span><span>~&euro;51</span></div>
+        <div class="sum-row"><span>Crannog Seafood, Fort William</span><span>~&euro;90</span></div>
+        <div class="sum-row"><span>Mhor Fish, Callander</span><span>~&euro;55</span></div>
+        <div class="sum-row"><span>Howie&rsquo;s Edinburgh</span><span>~&euro;60</span></div>
+        <div class="sum-row"><span>Department of Magic escape room (3 &times; ~&euro;22)</span><span>~&euro;65</span></div>
+        <div class="sum-row"><span>Edinburgh Castle (3 &times; ~&euro;21)</span><span>~&euro;64</span></div>
+        <div class="sum-row"><span>Eilean Donan Castle (3 &times; ~&euro;12)</span><span>~&euro;37</span></div>
+        <div class="sum-row"><span>All hikes, Culross, Greyfriars, Kelpies, viewpoints</span><span>&euro;0 &mdash; FREE</span></div>
+        <div class="sum-sub"><span>Dinner + Attractions Total</span><span>~&euro;480&ndash;510</span></div>
       </div>
     </div>
     <div class="sum-total">
       <div class="tot-lbl">
-        <span>Grand Total — All-In</span>
+        <span>Grand Total &mdash; All-In</span>
         Flights + Car + Hotels + All Meals + Attractions + Fuel
       </div>
       <div class="tot-amount">
-        <div class="tot-pp">≈ €970–1,080 per person</div>
-        <div class="tot-big">€2,910–3,240</div>
-        <div class="tot-pp" style="margin-top:4px;font-size:10.5px">Shopping/souvenirs not included · budget separately</div>
+        <div class="tot-pp">&asymp; &euro;970&ndash;1,080 per person</div>
+        <div class="tot-big">&euro;2,910&ndash;3,240</div>
+        <div class="tot-pp" style="margin-top:4px;font-size:10.5px">Shopping/souvenirs not included &middot; budget separately</div>
       </div>
     </div>
     <div class="fx-note">
-      Exchange rates used (Mar 29 2026): €1 = 390 HUF (Xe.com) · £1 = €1.156 (Xe.com). All costs are estimates — actual prices depend on availability and booking timing.
-      Book in advance: The Witchery · Edinburgh Castle · Eilean Donan Castle · Crannog Restaurant. No booking needed for House of Bruar or Tartan Weaving Mill.
+      Exchange rates used (Mar 29 2026): &euro;1 = 390 HUF (Xe.com) &middot; &pound;1 = &euro;1.156 (Xe.com). All costs are estimates &mdash; actual prices depend on availability and booking timing.
+      Book in advance: Eilean Donan Castle &middot; Department of Magic &middot; Edinburgh Castle &middot; Cannonball Restaurant. No booking needed for House of Bruar or Tartan Weaving Mill.
     </div>
   </div>
 
   <div class="footnote">
-    🏨 <a href="https://www.hilton.com/en/hotels/edihxhx-hampton-edinburgh-airport/" target="_blank">Hampton by Hilton Edinburgh Airport</a> ·
-    <a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Ballachulish Hotel</a> ·
+    &#x1F3E8; <a href="https://www.hilton.com/en/hotels/edihxhx-hampton-edinburgh-airport/" target="_blank">Hampton by Hilton Edinburgh Airport</a> &middot;
+    <a href="https://www.ballachulish-hotel.co.uk/" target="_blank">Ballachulish Hotel</a> &middot;
     <a href="https://www.premierinn.com/gb/en/hotels/scotland/lothian/edinburgh/edinburgh-city-centre-royal-mile.html" target="_blank">Premier Inn Edinburgh</a>
     &nbsp;|&nbsp;
-    🎟️ <a href="https://www.edinburghcastle.scot/" target="_blank">Edinburgh Castle</a> ·
-    <a href="https://www.eileandonancastle.com/" target="_blank">Eilean Donan</a> ·
-    <a href="https://www.houseofbruar.com/" target="_blank">House of Bruar</a> ·
-    <a href="https://www.thetartanweavingmill.com/" target="_blank">Tartan Weaving Mill</a>
+    &#x1F3AB; <a href="https://www.edinburghcastle.scot/" target="_blank">Edinburgh Castle</a> &middot;
+    <a href="https://www.eileandonancastle.com/" target="_blank">Eilean Donan</a> &middot;
+    <a href="https://www.departmentofmagic.com/" target="_blank">Dept of Magic</a> &middot;
+    <a href="https://cannonballrestaurant.com/" target="_blank">Cannonball Restaurant</a> &middot;
+    <a href="https://www.houseofbruar.com/" target="_blank">House of Bruar</a>
     &nbsp;|&nbsp;
-    🥾 <a href="https://www.walkhighlands.co.uk/fortwilliam/lostvalley.shtml" target="_blank">Lost Valley</a> ·
+    &#x1F97E; <a href="https://www.walkhighlands.co.uk/fortwilliam/lostvalley.shtml" target="_blank">Lost Valley</a> &middot;
     <a href="https://www.walkhighlands.co.uk/lochaber/steall.shtml" target="_blank">Steall Falls</a>
     &nbsp;|&nbsp;
-    🚗 <a href="https://www.ncp.co.uk/find-a-car-park/car-parks/edinburgh-castle-terrace-630027/" target="_blank">NCP Castle Terrace</a> ·
+    &#x1F697; <a href="https://www.ncp.co.uk/find-a-car-park/car-parks/edinburgh-castle-terrace-630027/" target="_blank">NCP Castle Terrace</a> &middot;
     <a href="https://www.q-park.co.uk/en-gb/cities/edinburgh/capital-square/" target="_blank">Q-Park Capital Square</a>
   </div>
 
-</div>
+</div><!-- /body -->
 
-<script src="js/map.js"></script>
 <script>
+// Leaflet map
+(function(){
+var map = L.map('trip-map').setView([56.5, -4.4], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:18}).addTo(map);
+
+function dot(color,size){
+  return L.divIcon({
+    html:'<div style="background:'+color+';width:'+size+'px;height:'+size+'px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,.45)"></div>',
+    iconSize:[size,size],iconAnchor:[size/2,size/2],className:''
+  });
+}
+
+var stops=[
+  {lat:55.9508,lng:-3.3615,c:'#c07b28',s:16,l:'Edinburgh Airport',d:'Arrive midnight Apr 2/3 &middot; Hampton by Hilton &middot; pick up car morning of Apr 3'},
+  {lat:56.0552,lng:-3.6298,c:'#8c2020',s:14,l:'Culross',d:'Apr 3 &middot; Historic medieval village &middot; Outlander filming location &middot; FREE'},
+  {lat:56.7047,lng:-3.7350,c:'#1f5a8a',s:13,l:'Pitlochry &mdash; Macnaughtons &amp; Tweed Shops',d:'Apr 3 &middot; Heritage tweed shops on the A9 &middot; Macnaughtons est. 1835'},
+  {lat:56.7709,lng:-3.9293,c:'#1f5a8a',s:16,l:'House of Bruar',d:"Apr 3 &middot; Scotland's premier tweed &amp; cashmere store &middot; Sale Barn for bargains &middot; on A9"},
+  {lat:56.7739,lng:-3.9343,c:'#256b45',s:13,l:'Falls of Bruar',d:'Apr 3 &middot; Free gorge walk next to House of Bruar &middot; 1&ndash;1.5 hrs'},
+  {lat:56.6678,lng:-4.9866,c:'#6b3fa0',s:14,l:'Three Sisters Viewpoint',d:'Apr 4 &middot; Harry Potter: Prisoner of Azkaban &middot; FREE'},
+  {lat:56.6540,lng:-4.9948,c:'#256b45',s:14,l:'Hidden Valley (Lost Valley)',d:'Apr 4 &middot; Hike 2.5&ndash;3 hrs &middot; FREE'},
+  {lat:56.6646,lng:-5.0566,c:'#c07b28',s:13,l:'Ballachulish Hotel',d:'Apr 3&ndash;4 &middot; 2 nights &middot; loch &amp; mountain views &middot; FISH restaurant'},
+  {lat:57.2739,lng:-5.5162,c:'#8c2020',s:16,l:'Eilean Donan Castle',d:'Apr 5 &middot; Open 10am&ndash;3pm &middot; book ahead &middot; ~&euro;12/person'},
+  {lat:56.7969,lng:-5.0036,c:'#6b3fa0',s:16,l:'Glen Nevis &mdash; Steall Falls',d:'Apr 5 &middot; HP: Goblet of Fire &middot; 120m waterfall &middot; gorge walk 2&ndash;3 hrs &middot; FREE'},
+  {lat:56.6333,lng:-4.7833,c:'#6b3fa0',s:14,l:'Rannoch Moor HP Viewpoint',d:'Apr 6 &middot; HP: Deathly Hallows Pt 1 &middot; A82 Bridge of Orchy &middot; 20 min stop &middot; FREE'},
+  {lat:56.1022,lng:-4.6362,c:'#256b45',s:14,l:'Luss &mdash; Loch Lomond',d:'Apr 6 &middot; Shore walk 1&ndash;1.5 hrs &middot; FREE &middot; beautiful village'},
+  {lat:56.2438,lng:-4.2147,c:'#1f5a8a',s:13,l:'Callander Charity Shops',d:'Apr 6 &middot; Cancer Research UK, PDSA, Strathcarron Hospice &middot; tweed hunting!'},
+  {lat:56.0203,lng:-3.7754,c:'#256b45',s:14,l:'The Kelpies &mdash; Falkirk',d:'Apr 7 &middot; 30m steel horse heads &middot; FREE entry to Helix Park &middot; FK2 7ZT'},
+  {lat:55.9480,lng:-3.1897,c:'#6b3fa0',s:14,l:'Department of Magic &mdash; Edinburgh',d:'Apr 7 evening &middot; HP escape room &middot; Blair Street &middot; book ahead at departmentofmagic.com'},
+  {lat:55.9441,lng:-3.1618,c:'#256b45',s:14,l:"Arthur's Seat",d:'Apr 8 &middot; Edinburgh hike 2&ndash;3 hrs &middot; FREE'},
+  {lat:55.9467,lng:-3.1921,c:'#6b3fa0',s:13,l:'Greyfriars Kirkyard',d:'Apr 8 &middot; Harry Potter &middot; Tom Riddle gravestone &middot; FREE'},
+  {lat:55.9490,lng:-3.1962,c:'#1f5a8a',s:13,l:'Tartan Weaving Mill &amp; Armstrong's',d:'Apr 8 &middot; Tartan Weaving Mill (FREE) + Armstrong vintage tweed shop'},
+  {lat:55.9486,lng:-3.1999,c:'#8c2020',s:14,l:'Edinburgh Castle',d:'Apr 8 &middot; ~&euro;21/person &middot; book ahead'},
+  {lat:55.9498,lng:-3.1979,c:'#c07b28',s:13,l:'Cannonball Restaurant',d:'Apr 8 &middot; Farewell dinner &middot; Castlehill &middot; book ahead at cannonballrestaurant.com'},
+];
+
+stops.forEach(function(s){
+  L.marker([s.lat,s.lng],{icon:dot(s.c,s.s)})
+   .addTo(map)
+   .bindPopup('<strong>'+s.l+'</strong><br><span style="color:#666">'+s.d+'</span>');
+});
+
+var route=[
+  [55.9508,-3.3615],
+  [56.0552,-3.6298],
+  [56.1500,-3.5000],
+  [56.4000,-3.7000],
+  [56.7047,-3.7350],
+  [56.7709,-3.9293],
+  [56.5000,-4.2000],
+  [56.3800,-4.9000],
+  [56.6678,-4.9866],
+  [56.6540,-4.9948],
+  [56.6646,-5.0566],
+  [56.8200,-5.1000],
+  [57.2739,-5.5162],
+  [57.0000,-5.1000],
+  [56.7969,-5.0036],
+  [56.7000,-4.9000],
+  [56.6333,-4.7833],
+  [56.5000,-4.5000],
+  [56.1022,-4.6362],
+  [56.2438,-4.2147],
+  [56.0203,-3.7754],
+  [55.9500,-3.2000],
+  [55.9441,-3.1618],
+  [55.9467,-3.1921],
+  [55.9486,-3.1999],
+  [55.9508,-3.3615],
+];
+
+L.polyline(route,{color:'#c07b28',weight:2.5,opacity:0.55,dashArray:'7 5'}).addTo(map);
+
+var leg=L.control({position:'bottomright'});
+leg.onAdd=function(){
+  var d=L.DomUtil.create('div');
+  d.style.cssText='background:white;padding:10px 13px;border-radius:8px;font-size:11px;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.15);line-height:2;';
+  d.innerHTML=[
+    ['#c07b28','Hotel / Transport'],
+    ['#6b3fa0','Harry Potter'],
+    ['#256b45','Hiking / Nature'],
+    ['#8c2020','Castle / History'],
+    ['#1f5a8a','Tweed / Shopping'],
+  ].map(function(x){return '<div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+x[0]+';margin-right:6px;vertical-align:middle"></span>'+x[1]+'</div>';}).join('');
+  return d;
+};
+leg.addTo(map);
+})();
+
+// Filter bar
 (function(){
   var tagSelectors = {
     'hp':           '.tag-hp',
@@ -830,7 +1076,6 @@
     var days  = document.querySelectorAll('#timeline .day');
     var progs = document.querySelectorAll('#timeline .prog');
 
-    // Reset everything
     days.forEach(function(d){
       d.style.display = '';
       d.querySelectorAll('.progs, .meal-strip').forEach(function(el){ el.style.display = ''; });
@@ -856,7 +1101,6 @@
       prog.style.display = prog.querySelector(sel) ? '' : 'none';
     });
 
-    // Hide days where every prog is now hidden
     days.forEach(function(day){
       var anyVisible = false;
       day.querySelectorAll('.prog').forEach(function(p){
