@@ -9,8 +9,6 @@
 <meta property="og:description" content="7-night road trip: Glencoe, Eilean Donan Castle, Edinburgh. Day-by-day itinerary with costs, map and hotel details.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
 <style>
 :root {
   --forest:#18302a; --pine:#24503e; --moss:#3a7055;
@@ -165,8 +163,6 @@ body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--dark);
 .fx-note{background:rgba(0,0,0,.25);padding:10px 30px;font-size:10px;color:rgba(246,241,233,.45);line-height:1.6;}
 .footnote{font-size:10px;color:var(--stone);font-style:italic;text-align:center;margin-top:18px;padding-bottom:8px;line-height:1.7;}
 .footnote a{color:var(--pine);border-bottom:1px dotted var(--pine);}
-.leaflet-popup-content{font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.5;}
-.leaflet-popup-content strong{color:#18302a;}
 .car-card{display:flex;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--mist);margin-top:28px;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.05);}
 .car-card img{width:380px;flex-shrink:0;object-fit:cover;object-position:center;}
 .car-card-info{padding:22px 26px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
@@ -254,7 +250,13 @@ body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--dark);
 
   <!-- MAP -->
   <div class="section-head"><h2>&#x1F5FA;&#xFE0F; Your Route</h2><span>Click any marker for details</span></div>
-  <div id="trip-map"></div>
+  <iframe id="trip-map"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=-6.1%2C55.7%2C-3.1%2C57.6&amp;layer=mapnik"
+    style="width:100%;height:430px;border-radius:12px;border:1px solid #e4dfd5;box-shadow:0 2px 14px rgba(0,0,0,.08);display:block;"
+    loading="lazy" title="Scotland trip route map"></iframe>
+  <div style="font-size:10px;color:#8a7f72;margin-top:6px;text-align:right;">
+    <a href="https://www.openstreetmap.org/#map=7/56.6/-4.6" target="_blank" style="color:#8a7f72;">View larger map</a>
+  </div>
 
   <!-- HOUSE OF BRUAR NOTE -->
   <div class="booking-alert">
@@ -976,95 +978,6 @@ body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--dark);
 </div><!-- /body -->
 
 <script>
-// Leaflet map
-(function(){
-if (typeof L === 'undefined') { document.getElementById('trip-map').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8a7f72;font-size:13px;">Map unavailable — check your connection</div>'; return; }
-var map = L.map('trip-map').setView([56.5, -4.4], 6);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:18}).addTo(map);
-
-function dot(color,size){
-  return L.divIcon({
-    html:'<div style="background:'+color+';width:'+size+'px;height:'+size+'px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,.45)"></div>',
-    iconSize:[size,size],iconAnchor:[size/2,size/2],className:''
-  });
-}
-
-var stops=[
-  {lat:55.9508,lng:-3.3615,c:'#c07b28',s:16,l:'Edinburgh Airport',d:'Arrive midnight Apr 2/3 &middot; Hampton by Hilton &middot; pick up car morning of Apr 3'},
-  {lat:56.0552,lng:-3.6298,c:'#8c2020',s:14,l:'Culross',d:'Apr 3 &middot; Historic medieval village &middot; Outlander filming location &middot; FREE'},
-  {lat:56.7047,lng:-3.7350,c:'#1f5a8a',s:13,l:'Pitlochry &mdash; Macnaughtons &amp; Tweed Shops',d:'Apr 3 &middot; Heritage tweed shops on the A9 &middot; Macnaughtons est. 1835'},
-  {lat:56.7709,lng:-3.9293,c:'#1f5a8a',s:16,l:'House of Bruar',d:"Apr 3 &middot; Scotland's premier tweed &amp; cashmere store &middot; Sale Barn for bargains &middot; on A9"},
-  {lat:56.7739,lng:-3.9343,c:'#256b45',s:13,l:'Falls of Bruar',d:'Apr 3 &middot; Free gorge walk next to House of Bruar &middot; 1&ndash;1.5 hrs'},
-  {lat:56.6678,lng:-4.9866,c:'#6b3fa0',s:14,l:'Three Sisters Viewpoint',d:'Apr 4 &middot; Harry Potter: Prisoner of Azkaban &middot; FREE'},
-  {lat:56.6540,lng:-4.9948,c:'#256b45',s:14,l:'Hidden Valley (Lost Valley)',d:'Apr 4 &middot; Hike 2.5&ndash;3 hrs &middot; FREE'},
-  {lat:56.6646,lng:-5.0566,c:'#c07b28',s:13,l:'Ballachulish Hotel',d:'Apr 3&ndash;4 &middot; 2 nights &middot; loch &amp; mountain views &middot; FISH restaurant'},
-  {lat:57.2739,lng:-5.5162,c:'#8c2020',s:16,l:'Eilean Donan Castle',d:'Apr 5 &middot; Open 10am&ndash;3pm &middot; book ahead &middot; ~&euro;12/person'},
-  {lat:56.7969,lng:-5.0036,c:'#6b3fa0',s:16,l:'Glen Nevis &mdash; Steall Falls',d:'Apr 5 &middot; HP: Goblet of Fire &middot; 120m waterfall &middot; gorge walk 2&ndash;3 hrs &middot; FREE'},
-  {lat:56.6333,lng:-4.7833,c:'#6b3fa0',s:14,l:'Rannoch Moor HP Viewpoint',d:'Apr 6 &middot; HP: Deathly Hallows Pt 1 &middot; A82 Bridge of Orchy &middot; 20 min stop &middot; FREE'},
-  {lat:56.1022,lng:-4.6362,c:'#256b45',s:14,l:'Luss &mdash; Loch Lomond',d:'Apr 6 &middot; Shore walk 1&ndash;1.5 hrs &middot; FREE &middot; beautiful village'},
-  {lat:56.2438,lng:-4.2147,c:'#1f5a8a',s:13,l:'Callander Charity Shops',d:'Apr 6 &middot; Cancer Research UK, PDSA, Strathcarron Hospice &middot; tweed hunting!'},
-  {lat:56.0203,lng:-3.7754,c:'#256b45',s:14,l:'The Kelpies &mdash; Falkirk',d:'Apr 7 &middot; 30m steel horse heads &middot; FREE entry to Helix Park &middot; FK2 7ZT'},
-  {lat:55.9480,lng:-3.1897,c:'#6b3fa0',s:14,l:'Department of Magic &mdash; Edinburgh',d:'Apr 7 evening &middot; HP escape room &middot; Blair Street &middot; book ahead at departmentofmagic.com'},
-  {lat:55.9441,lng:-3.1618,c:'#256b45',s:14,l:"Arthur's Seat",d:'Apr 8 &middot; Edinburgh hike 2&ndash;3 hrs &middot; FREE'},
-  {lat:55.9467,lng:-3.1921,c:'#6b3fa0',s:13,l:'Greyfriars Kirkyard',d:'Apr 8 &middot; Harry Potter &middot; Tom Riddle gravestone &middot; FREE'},
-  {lat:55.9490,lng:-3.1962,c:'#1f5a8a',s:13,l:'Tartan Weaving Mill &amp; Armstrong's',d:'Apr 8 &middot; Tartan Weaving Mill (FREE) + Armstrong vintage tweed shop'},
-  {lat:55.9486,lng:-3.1999,c:'#8c2020',s:14,l:'Edinburgh Castle',d:'Apr 8 &middot; ~&euro;21/person &middot; book ahead'},
-  {lat:55.9498,lng:-3.1979,c:'#c07b28',s:13,l:'Cannonball Restaurant',d:'Apr 8 &middot; Farewell dinner &middot; Castlehill &middot; book ahead at cannonballrestaurant.com'},
-];
-
-stops.forEach(function(s){
-  L.marker([s.lat,s.lng],{icon:dot(s.c,s.s)})
-   .addTo(map)
-   .bindPopup('<strong>'+s.l+'</strong><br><span style="color:#666">'+s.d+'</span>');
-});
-
-var route=[
-  [55.9508,-3.3615],
-  [56.0552,-3.6298],
-  [56.1500,-3.5000],
-  [56.4000,-3.7000],
-  [56.7047,-3.7350],
-  [56.7709,-3.9293],
-  [56.5000,-4.2000],
-  [56.3800,-4.9000],
-  [56.6678,-4.9866],
-  [56.6540,-4.9948],
-  [56.6646,-5.0566],
-  [56.8200,-5.1000],
-  [57.2739,-5.5162],
-  [57.0000,-5.1000],
-  [56.7969,-5.0036],
-  [56.7000,-4.9000],
-  [56.6333,-4.7833],
-  [56.5000,-4.5000],
-  [56.1022,-4.6362],
-  [56.2438,-4.2147],
-  [56.0203,-3.7754],
-  [55.9500,-3.2000],
-  [55.9441,-3.1618],
-  [55.9467,-3.1921],
-  [55.9486,-3.1999],
-  [55.9508,-3.3615],
-];
-
-L.polyline(route,{color:'#c07b28',weight:2.5,opacity:0.55,dashArray:'7 5'}).addTo(map);
-
-var leg=L.control({position:'bottomright'});
-leg.onAdd=function(){
-  var d=L.DomUtil.create('div');
-  d.style.cssText='background:white;padding:10px 13px;border-radius:8px;font-size:11px;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.15);line-height:2;';
-  d.innerHTML=[
-    ['#c07b28','Hotel / Transport'],
-    ['#6b3fa0','Harry Potter'],
-    ['#256b45','Hiking / Nature'],
-    ['#8c2020','Castle / History'],
-    ['#1f5a8a','Tweed / Shopping'],
-  ].map(function(x){return '<div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+x[0]+';margin-right:6px;vertical-align:middle"></span>'+x[1]+'</div>';}).join('');
-  return d;
-};
-leg.addTo(map);
-})();
-
 // Filter bar
 (function(){
   var tagSelectors = {
