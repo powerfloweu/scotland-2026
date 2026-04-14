@@ -9,8 +9,8 @@
 <meta property="og:description" content="7-night road trip: Glencoe, Eilean Donan Castle, Edinburgh. Day-by-day itinerary with costs, map and hotel details.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
 <style>
 :root {
   --forest:#18302a; --pine:#24503e; --moss:#3a7055;
@@ -978,6 +978,7 @@ body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--dark);
 <script>
 // Leaflet map
 (function(){
+if (typeof L === 'undefined') { document.getElementById('trip-map').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8a7f72;font-size:13px;">Map unavailable — check your connection</div>'; return; }
 var map = L.map('trip-map').setView([56.5, -4.4], 6);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:18}).addTo(map);
 
