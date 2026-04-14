@@ -999,40 +999,34 @@ body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--dark);
 var map = L.map('trip-map').setView([56.5, -4.6], 6);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:18}).addTo(map);
 
-function dot(color,size){
-  return L.divIcon({
-    html:'<div style="background:'+color+';width:'+size+'px;height:'+size+'px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,.45)"></div>',
-    iconSize:[size,size],iconAnchor:[size/2,size/2],className:''
-  });
-}
-
 var stops=[
-  {lat:55.9508,lng:-3.3615,c:'#c07b28',s:16,l:'Edinburgh Airport',d:'Apr 2/3 &middot; Hampton by Hilton &middot; pick up car morning of Apr 3'},
-  {lat:56.0552,lng:-3.6298,c:'#8c2020',s:14,l:'Culross',d:'Apr 3 &middot; Historic medieval village &middot; Outlander filming location &middot; FREE'},
-  {lat:56.7047,lng:-3.7350,c:'#1f5a8a',s:13,l:'Pitlochry &mdash; Macnaughtons &amp; Tweed',d:'Apr 3 &middot; Heritage tweed shops on the A9'},
-  {lat:56.7709,lng:-3.9293,c:'#1f5a8a',s:16,l:'House of Bruar',d:"Apr 3 &middot; Scotland's premier tweed store &middot; Sale Barn for bargains"},
-  {lat:56.7739,lng:-3.9343,c:'#256b45',s:13,l:'Falls of Bruar',d:'Apr 3 &middot; Free gorge walk &middot; 1&ndash;1.5 hrs'},
-  {lat:56.6678,lng:-4.9866,c:'#6b3fa0',s:14,l:'Three Sisters Viewpoint',d:'Apr 4 &middot; HP: Prisoner of Azkaban &middot; FREE'},
-  {lat:56.6540,lng:-4.9948,c:'#256b45',s:14,l:'Hidden Valley (Lost Valley)',d:'Apr 4 &middot; Hike 2.5&ndash;3 hrs &middot; FREE'},
-  {lat:56.6646,lng:-5.0566,c:'#c07b28',s:14,l:'Ballachulish Hotel',d:'Apr 3&ndash;4 &middot; 2 nights &middot; loch &amp; mountain views'},
-  {lat:57.2739,lng:-5.5162,c:'#8c2020',s:16,l:'Eilean Donan Castle',d:'Apr 5 &middot; Open 10am&ndash;3pm &middot; ~&euro;12/person'},
-  {lat:56.7969,lng:-5.0036,c:'#6b3fa0',s:16,l:'Glen Nevis &mdash; Steall Falls (HP)',d:'Apr 5 &middot; HP: Goblet of Fire &middot; 120m waterfall &middot; FREE'},
-  {lat:56.6333,lng:-4.7833,c:'#6b3fa0',s:14,l:'Rannoch Moor HP Viewpoint',d:'Apr 6 &middot; HP: Deathly Hallows Pt 1 &middot; FREE'},
-  {lat:56.1022,lng:-4.6362,c:'#256b45',s:14,l:'Luss &mdash; Loch Lomond',d:'Apr 6 &middot; Shore walk 1&ndash;1.5 hrs &middot; FREE'},
-  {lat:56.2438,lng:-4.2147,c:'#1f5a8a',s:13,l:'Callander Charity Shops',d:'Apr 6 &middot; Tweed hunting &middot; Cancer Research UK, PDSA, Strathcarron'},
-  {lat:56.0203,lng:-3.7754,c:'#256b45',s:15,l:'The Kelpies &mdash; Falkirk',d:'Apr 7 &middot; 30m steel horse heads &middot; FREE'},
-  {lat:55.9480,lng:-3.1897,c:'#6b3fa0',s:14,l:'Dept of Magic &mdash; HP Escape Room',d:'Apr 7 evening &middot; Blair Street Edinburgh &middot; book ahead'},
-  {lat:55.9441,lng:-3.1618,c:'#256b45',s:14,l:"Arthur's Seat",d:'Apr 8 &middot; Edinburgh hike 2&ndash;3 hrs &middot; FREE'},
-  {lat:55.9467,lng:-3.1921,c:'#6b3fa0',s:13,l:'Greyfriars Kirkyard',d:'Apr 8 &middot; HP: Tom Riddle gravestone &middot; FREE'},
-  {lat:55.9490,lng:-3.1962,c:'#1f5a8a',s:13,l:'Tartan Weaving Mill &amp; Armstrong\'s',d:"Apr 8 &middot; Tartan Weaving Mill (FREE) + Armstrong's vintage tweed"},
-  {lat:55.9486,lng:-3.1999,c:'#8c2020',s:14,l:'Edinburgh Castle',d:'Apr 8 &middot; ~&euro;21/person &middot; book ahead'},
-  {lat:55.9498,lng:-3.1979,c:'#c07b28',s:13,l:'Cannonball Restaurant',d:'Apr 8 &middot; Dinner &middot; steps from Edinburgh Castle'},
+  {lat:55.9508,lng:-3.3615,c:'#c07b28',r:8, l:'Edinburgh Airport',d:'Apr 2/3 · Hampton by Hilton · pick up car morning of Apr 3'},
+  {lat:56.0552,lng:-3.6298,c:'#8c2020',r:7, l:'Culross',d:'Apr 3 · Historic medieval village · Outlander filming location · FREE'},
+  {lat:56.7047,lng:-3.7350,c:'#1f5a8a',r:6, l:'Pitlochry — Macnaughtons & Tweed',d:'Apr 3 · Heritage tweed shops on the A9'},
+  {lat:56.7709,lng:-3.9293,c:'#1f5a8a',r:8, l:'House of Bruar',d:"Apr 3 · Scotland's premier tweed store · Sale Barn for bargains"},
+  {lat:56.7739,lng:-3.9343,c:'#256b45',r:6, l:'Falls of Bruar',d:'Apr 3 · Free gorge walk · 1–1.5 hrs'},
+  {lat:56.6678,lng:-4.9866,c:'#6b3fa0',r:7, l:'Three Sisters Viewpoint',d:'Apr 4 · HP: Prisoner of Azkaban · FREE'},
+  {lat:56.6540,lng:-4.9948,c:'#256b45',r:7, l:'Hidden Valley (Lost Valley)',d:'Apr 4 · Hike 2.5–3 hrs · FREE'},
+  {lat:56.6646,lng:-5.0566,c:'#c07b28',r:7, l:'Ballachulish Hotel',d:'Apr 3–4 · 2 nights · loch & mountain views'},
+  {lat:57.2739,lng:-5.5162,c:'#8c2020',r:8, l:'Eilean Donan Castle',d:'Apr 5 · Open 10am–3pm · ~€12/person'},
+  {lat:56.7969,lng:-5.0036,c:'#6b3fa0',r:8, l:'Glen Nevis — Steall Falls (HP)',d:'Apr 5 · HP: Goblet of Fire · 120m waterfall · FREE'},
+  {lat:56.6333,lng:-4.7833,c:'#6b3fa0',r:7, l:'Rannoch Moor HP Viewpoint',d:'Apr 6 · HP: Deathly Hallows Pt 1 · FREE'},
+  {lat:56.1022,lng:-4.6362,c:'#256b45',r:7, l:'Luss — Loch Lomond',d:'Apr 6 · Shore walk 1–1.5 hrs · FREE'},
+  {lat:56.2438,lng:-4.2147,c:'#1f5a8a',r:6, l:'Callander Charity Shops',d:'Apr 6 · Tweed hunting · Cancer Research UK, PDSA, Strathcarron'},
+  {lat:56.0203,lng:-3.7754,c:'#256b45',r:8, l:'The Kelpies — Falkirk',d:'Apr 7 · 30m steel horse heads · FREE'},
+  {lat:55.9480,lng:-3.1897,c:'#6b3fa0',r:7, l:'Dept of Magic — HP Escape Room',d:'Apr 7 evening · Blair Street Edinburgh · book ahead'},
+  {lat:55.9441,lng:-3.1618,c:'#256b45',r:7, l:"Arthur's Seat",d:'Apr 8 · Edinburgh hike 2–3 hrs · FREE'},
+  {lat:55.9467,lng:-3.1921,c:'#6b3fa0',r:6, l:'Greyfriars Kirkyard',d:'Apr 8 · HP: Tom Riddle gravestone · FREE'},
+  {lat:55.9490,lng:-3.1962,c:'#1f5a8a',r:6, l:"Tartan Weaving Mill & Armstrong's",d:"Apr 8 · Tartan Weaving Mill (FREE) + Armstrong's vintage tweed"},
+  {lat:55.9486,lng:-3.1999,c:'#8c2020',r:7, l:'Edinburgh Castle',d:'Apr 8 · ~€21/person · book ahead'},
+  {lat:55.9498,lng:-3.1979,c:'#c07b28',r:6, l:'Cannonball Restaurant',d:'Apr 8 · Dinner · steps from Edinburgh Castle'},
 ];
 
 stops.forEach(function(s){
-  L.marker([s.lat,s.lng],{icon:dot(s.c,s.s)})
-   .addTo(map)
-   .bindPopup('<strong>'+s.l+'</strong><br><span style="color:#555;font-size:11px">'+s.d+'</span>');
+  L.circleMarker([s.lat,s.lng],{
+    radius:s.r, fillColor:s.c, color:'white', weight:2,
+    opacity:1, fillOpacity:1
+  }).addTo(map).bindPopup('<strong>'+s.l+'</strong><br><span style="color:#555;font-size:11px">'+s.d+'</span>');
 });
 
 var route=[
